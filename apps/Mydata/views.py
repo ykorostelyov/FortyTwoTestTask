@@ -17,5 +17,6 @@ def index(request):
     vars = dict(
         all_result=Mycard.objects.all()
     )
-    return render_to_response(os.path.join(BASE_DIR + "/apps/Mydata/templates/Mydata/index.html"),
+    return render_to_response(os.path.join(BASE_DIR +
+                                           "/apps/Mydata/templates/Mydata/index.html"),
                               {'frst_result': frst_result})
