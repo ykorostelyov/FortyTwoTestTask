@@ -1,6 +1,15 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="{% static "assets/css/style.css" %}"/>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">42 Coffee Cups Test Assignment</a></h1>
+        </div>
 
-{% block title %}<H1>42 Coffee Cups Test Assignment</H1>{% endblock %}
-{% block content %}
     <div id="mydata">
         <ul>
         {% for mydata in frst_result %}
@@ -17,14 +26,12 @@
                 <tr>
                 <td>Bio:</td><td> {{ mydata.bio}}</td><td>Skype:</td><td> {{ mydata.Skype}}</td>
             </tr>
-                </tr>
                 <tr>
                 <td> </td><td></td><td>Other contacts:</td><td> {{ mydata.otherContacts}}</td>
             </tr>
-            </tr>
             </table>
-
         {% endfor %}
         </ul>
     </div>
-{%endblock%}
+</body>
+</html>
