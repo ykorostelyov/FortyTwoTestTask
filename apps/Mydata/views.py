@@ -4,7 +4,8 @@ import os
 
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
-BASE_DIR = os.path.dirname(PROJECT_DIR)
+# base dir
+B_DIR = os.path.dirname(PROJECT_DIR)
 
 # list of records
 all_result = Mycard.objects.all()
@@ -17,6 +18,5 @@ def index(request):
     vars = dict(
         all_result=Mycard.objects.all()
     )
-    return render_to_response(os.path.join(BASE_DIR +
-               "/apps/Mydata/templates/Mydata/index.html"),
-                {'frst_result': frst_result})
+    full_path= os.path.join(B_DIR+"/apps/Mydata/templates/Mydata/index.html")
+    return render_to_response(full_path,{'frst_result': frst_result})
