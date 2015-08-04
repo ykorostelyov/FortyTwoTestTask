@@ -41,8 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'apps.hello',
+    'Mydata',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,6 +65,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        "USER": "admin",
+        "PASSWORD": "admin",
     }
 }
 
@@ -123,7 +124,12 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR+"/apps/Mydata/templates/")
 )
+
+#FIXTURE_DIRS = (
+#    os.path.join(BASE_DIR+"/apps/Mydata/fixtures/")
+#)
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
