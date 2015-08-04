@@ -15,8 +15,5 @@ frst_result = all_result.filter()[:1]
 
 # index
 def index(request):
-    vars = dict(
-        all_result=Mycard.objects.all()
-    )
     full_path = os.path.join(B_DIR+"/apps/Mydata/templates/Mydata/index.html")
     return render_to_response(full_path, {'frst_result': frst_result})
