@@ -2,7 +2,7 @@ from django.test import TestCase
 from .models import Mycard
 
 class TestMycardModel(TestCase):
-    Skype_str = "yuryiy.torhammer"
+    Skype_str = "yuriy.torhammer"
 
     def setUp(self):
         Mycard.objects.create(fName='Yuriy',
@@ -16,4 +16,4 @@ class TestMycardModel(TestCase):
         """Testing of My card creatig"""
         mycard = Mycard.objects.get(id='1')
         self.assertEqual(mycard.Skype, self.Skype_str)
-        self.assertEqual(mycard.Jabber, 'yuryi.torhammer')
+        self.assertEqual(mycard.Jabber, 'ykorostelyov@khavr.com')
