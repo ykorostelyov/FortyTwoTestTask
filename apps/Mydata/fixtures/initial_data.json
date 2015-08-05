@@ -1,258 +1,317 @@
 [
 {
+    "pk": 1,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "logentry",
+        "name": "log entry",
         "app_label": "admin"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 1
+    }
 },
 {
+    "pk": 2,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "permission",
+        "name": "permission",
         "app_label": "auth"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 2
+    }
 },
 {
+    "pk": 3,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "group",
+        "name": "group",
         "app_label": "auth"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 3
+    }
 },
 {
+    "pk": 4,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "user",
+        "name": "user",
         "app_label": "auth"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 4
+    }
 },
 {
+    "pk": 5,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "contenttype",
+        "name": "content type",
         "app_label": "contenttypes"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 5
+    }
 },
 {
+    "pk": 6,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "session",
+        "name": "session",
         "app_label": "sessions"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 6
+    }
 },
 {
+    "pk": 7,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "model": "migrationhistory",
+        "name": "migration history",
+        "app_label": "south"
+    }
+},
+{
+    "pk": 8,
+    "model": "contenttypes.contenttype",
     "fields": {
         "model": "mycard",
+        "name": "mycard",
         "app_label": "Mydata"
-    },
-    "model": "contenttypes.contenttype",
-    "pk": 7
+    }
 },
 {
+    "pk": "2jbhk5obyv1ecse2qcv357pfrqk16vaj",
+    "model": "sessions.session",
     "fields": {
         "expire_date": "2015-08-18T21:40:03.977Z",
         "session_data": "ZWU2MTEwZDFlNjE0MGYwNWZkNTZjNjIxODIzMzQ5NGU2MmI4ZDQxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MGY1MzcyZDljNTE2YmU4N2E5YjM5Y2YwMjNiNTgzZDA1YTdlOTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
-    },
-    "model": "sessions.session",
-    "pk": "2jbhk5obyv1ecse2qcv357pfrqk16vaj"
+    }
 },
 {
+    "pk": 1,
+    "model": "Mydata.mycard",
+    "fields": {
+        "bio": "Was born in Kiev. Studied in school num 210, then in Kiev Polytechnical Institute. Worked in some banks.",
+        "bDate": "1983-01-13",
+        "lName": "Korostelyov",
+        "otherContacts": "mob: 067.693.61.96, second email: ymk_@ukr.net",
+        "fName": "Yuriy",
+        "Skype": "yuriy.torhammer",
+        "Jabber": "ykorostelyov@khavr.com",
+        "eMail": "ykorostelyov@gmail.com"
+    }
+},
+{
+    "pk": 1,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_logentry",
         "name": "Can add log entry",
         "content_type": 1
-    },
-    "model": "auth.permission",
-    "pk": 1
+    }
 },
 {
+    "pk": 2,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_logentry",
         "name": "Can change log entry",
         "content_type": 1
-    },
-    "model": "auth.permission",
-    "pk": 2
+    }
 },
 {
+    "pk": 3,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_logentry",
         "name": "Can delete log entry",
         "content_type": 1
-    },
-    "model": "auth.permission",
-    "pk": 3
+    }
 },
 {
+    "pk": 4,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_permission",
         "name": "Can add permission",
         "content_type": 2
-    },
-    "model": "auth.permission",
-    "pk": 4
+    }
 },
 {
+    "pk": 5,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_permission",
         "name": "Can change permission",
         "content_type": 2
-    },
-    "model": "auth.permission",
-    "pk": 5
+    }
 },
 {
+    "pk": 6,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_permission",
         "name": "Can delete permission",
         "content_type": 2
-    },
-    "model": "auth.permission",
-    "pk": 6
+    }
 },
 {
+    "pk": 7,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_group",
         "name": "Can add group",
         "content_type": 3
-    },
-    "model": "auth.permission",
-    "pk": 7
+    }
 },
 {
+    "pk": 8,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_group",
         "name": "Can change group",
         "content_type": 3
-    },
-    "model": "auth.permission",
-    "pk": 8
+    }
 },
 {
+    "pk": 9,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_group",
         "name": "Can delete group",
         "content_type": 3
-    },
-    "model": "auth.permission",
-    "pk": 9
+    }
 },
 {
+    "pk": 10,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_user",
         "name": "Can add user",
         "content_type": 4
-    },
-    "model": "auth.permission",
-    "pk": 10
+    }
 },
 {
+    "pk": 11,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_user",
         "name": "Can change user",
         "content_type": 4
-    },
-    "model": "auth.permission",
-    "pk": 11
+    }
 },
 {
+    "pk": 12,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_user",
         "name": "Can delete user",
         "content_type": 4
-    },
-    "model": "auth.permission",
-    "pk": 12
+    }
 },
 {
+    "pk": 13,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_contenttype",
         "name": "Can add content type",
         "content_type": 5
-    },
-    "model": "auth.permission",
-    "pk": 13
+    }
 },
 {
+    "pk": 14,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_contenttype",
         "name": "Can change content type",
         "content_type": 5
-    },
-    "model": "auth.permission",
-    "pk": 14
+    }
 },
 {
+    "pk": 15,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_contenttype",
         "name": "Can delete content type",
         "content_type": 5
-    },
-    "model": "auth.permission",
-    "pk": 15
+    }
 },
 {
+    "pk": 16,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_session",
         "name": "Can add session",
         "content_type": 6
-    },
-    "model": "auth.permission",
-    "pk": 16
+    }
 },
 {
+    "pk": 17,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_session",
         "name": "Can change session",
         "content_type": 6
-    },
-    "model": "auth.permission",
-    "pk": 17
+    }
 },
 {
+    "pk": 18,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_session",
         "name": "Can delete session",
         "content_type": 6
-    },
-    "model": "auth.permission",
-    "pk": 18
+    }
 },
 {
+    "pk": 19,
+    "model": "auth.permission",
+    "fields": {
+        "codename": "add_migrationhistory",
+        "name": "Can add migration history",
+        "content_type": 7
+    }
+},
+{
+    "pk": 20,
+    "model": "auth.permission",
+    "fields": {
+        "codename": "change_migrationhistory",
+        "name": "Can change migration history",
+        "content_type": 7
+    }
+},
+{
+    "pk": 21,
+    "model": "auth.permission",
+    "fields": {
+        "codename": "delete_migrationhistory",
+        "name": "Can delete migration history",
+        "content_type": 7
+    }
+},
+{
+    "pk": 22,
+    "model": "auth.permission",
     "fields": {
         "codename": "add_mycard",
         "name": "Can add mycard",
-        "content_type": 7
-    },
-    "model": "auth.permission",
-    "pk": 19
+        "content_type": 8
+    }
 },
 {
+    "pk": 23,
+    "model": "auth.permission",
     "fields": {
         "codename": "change_mycard",
         "name": "Can change mycard",
-        "content_type": 7
-    },
-    "model": "auth.permission",
-    "pk": 20
+        "content_type": 8
+    }
 },
 {
+    "pk": 24,
+    "model": "auth.permission",
     "fields": {
         "codename": "delete_mycard",
         "name": "Can delete mycard",
-        "content_type": 7
-    },
-    "model": "auth.permission",
-    "pk": 21
+        "content_type": 8
+    }
 },
 {
+    "pk": 1,
+    "model": "auth.user",
     "fields": {
         "username": "admin",
         "first_name": "",
@@ -266,22 +325,6 @@
         "password": "pbkdf2_sha256$20000$R05qGy52Iu4l$QIozfYm2RnnRDG0gZRkuG2mViw/m4byG2uKOfAWR79Q=",
         "email": "admin@admin.com",
         "date_joined": "2015-08-04T21:39:21.220Z"
-    },
-    "model": "auth.user",
-    "pk": 1
-},
-{
-    "fields": {
-        "bio": "Was born in Kiev. Studied in school num 210, then in Kiev Polytechnical Institute. Worked in some banks.",
-        "bDate": "1983-01-13",
-        "lName": "Korostelyov",
-        "otherContacts": "mob: 067.693.61.96, second email: ymk_@ukr.net",
-        "fName": "Yuriy",
-        "Skype": "yuriy.torhammer",
-        "Jabber": "ykorostelyov@khavr.com",
-        "eMail": "ykorostelyov@gmail.com"
-    },
-    "model": "Mydata.mycard",
-    "pk": 1
+    }
 }
 ]
