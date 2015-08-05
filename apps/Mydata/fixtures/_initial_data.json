@@ -1,0 +1,42 @@
+[
+{
+  "fields": {
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_active": true,
+    "is_superuser": true,
+    "is_staff": true,
+    "last_login": "2015-08-04T21:40:03.975Z",
+    "groups": [],
+    "user_permissions": [],
+    "password": "pbkdf2_sha256$20000$R05qGy52Iu4l$QIozfYm2RnnRDG0gZRkuG2mViw/m4byG2uKOfAWR79Q=",
+    "email": "admin@admin.com",
+    "date_joined": "2015-08-04T21:39:21.220Z"
+  },
+  "model": "auth.user",
+  "pk": 1
+},
+{
+  "fields": {
+    "expire_date": "2015-08-18T21:40:03.977Z",
+    "session_data": "ZWU2MTEwZDFlNjE0MGYwNWZkNTZjNjIxODIzMzQ5NGU2MmI4ZDQxNzp7Il9hdXRoX3VzZXJfaGFzaCI6ImI4MGY1MzcyZDljNTE2YmU4N2E5YjM5Y2YwMjNiNTgzZDA1YTdlOTEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+  },
+  "model": "sessions.session",
+  "pk": "2jbhk5obyv1ecse2qcv357pfrqk16vaj"
+},
+{
+  "fields": {
+    "bio": "Was born in Kiev. Studied in school num 210, then in Kiev Polytechnical Institute. Worked in some banks.",
+    "bDate": "1983-01-13",
+    "lName": "Korostelyov",
+    "otherContacts": "mob: 067.693.61.96, second email: ymk_@ukr.net",
+    "fName": "Yuriy",
+    "Skype": "yuriy.torhammer",
+    "Jabber": "ykorostelyov@khavr.com",
+    "eMail": "ykorostelyov@gmail.com"
+  },
+  "model": "Mydata.mycard",
+  "pk": 1
+}
+]
