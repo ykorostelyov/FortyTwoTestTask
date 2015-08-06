@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="mydata">
+        <ul>
+        {% for mydata in frst_result %}
+            <table width = 800 >
+            <tr >
+                <td width = "15%">Name: </td><td> {{ mydata.fName}}</td><td width = "15%">Contacts    </td>
+            </tr>
+            <tr>
+                <td>Last Name: </td><td> {{ mydata.lName}}</td><td>Email: </td><td>{{ mydata.eMail}}</td>
+            </tr>
+                <tr>
+                <td>Date of birth:</td><td> {{ mydata.bDate}}</td><td>Jabber:</td><td> {{ mydata.Jabber}}</td>
+            </tr>
+                <tr>
+                <td>Bio:</td><td> {{ mydata.bio}}</td><td>Skype:</td><td> {{ mydata.Skype}}</td>
+            </tr>
+                <tr>
+                <td> </td><td></td><td>Other contacts:</td><td> {{ mydata.otherContacts}}</td>
+            </tr>
+            </table>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

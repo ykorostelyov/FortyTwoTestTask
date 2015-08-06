@@ -9,3 +9,10 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)
+
+
+
+
+if '--noinput' in sys.argv:
+    if not '--all' in sys.argv:
+        os.system('python manage.py syncdb --noinput --all')

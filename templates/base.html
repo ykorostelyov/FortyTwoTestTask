@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}{% endblock title %}Site Name</title>
+        <title>{% block title %}{% endblock title %}42 Coffee Cups Test Assignmen</title>
 
         <meta http-equiv="X-UA-Compatible" content="chrome=IE7" />
 
@@ -12,11 +12,13 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
         <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
-
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
         {% block extra_head %}{% endblock extra_head %}
 
     </head>
     <body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+    <h1>42 Coffee Cups Test Assignmen</h1>
         {% block content %}{% endblock content %}
     </body>
 </html>
