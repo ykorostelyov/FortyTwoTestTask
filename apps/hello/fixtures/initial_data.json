@@ -81,7 +81,7 @@
 },
 {
     "pk": 1,
-    "model": "Mydata.mycard",
+    "model": "hello.mycard",
     "fields": {
         "bio": "Was born in Kiev. Studied in school num 210, then in Kiev Polytechnical Institute. Worked in some banks.",
         "bDate": "1983-01-13",
