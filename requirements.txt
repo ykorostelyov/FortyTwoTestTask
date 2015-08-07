@@ -1,3 +1,5 @@
+python==2.7.10
+virtualenv==13.1.0
 42cc-pystyle==0.0.15
 South==1.0.2
 Django==1.6.7
