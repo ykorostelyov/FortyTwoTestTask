@@ -10,7 +10,6 @@ B_DIR = os.path.dirname(PROJECT_DIR)
 
 # index
 def index(request):
-    full_path = os.path.join(B_DIR+"/apps/Mydata/templates/Mydata/index.html")
     all_result = Mycard.objects.all()
     frst_result = all_result.filter()[:1]
-    return render_to_response(full_path, {'frst_result': frst_result})
+    return render_to_response("hello/index.html", {'frst_result': frst_result})

@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
             ('bio', self.gf('django.db.models.fields.CharField')(max_length=1024)),
             ('otherContacts', self.gf('django.db.models.fields.CharField')(max_length=200)),
         ))
-        db.send_create_signal(u'Mydata', ['Mycard'])
+        db.send_create_signal(u'hello', ['Mycard'])
 
 
     def backwards(self, orm):
@@ -29,7 +29,7 @@ class Migration(SchemaMigration):
 
 
     models = {
-        u'Mydata.mycard': {
+        u'hello.mycard': {
             'Jabber': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'Meta': {'object_name': 'Mycard'},
             'Skype': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
@@ -43,4 +43,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['Mydata']
+    complete_apps = ['hello']
