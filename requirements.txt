@@ -1,3 +1,2 @@
 42cc-pystyle==0.0.15
 Django==1.6.7
-uwsgi
