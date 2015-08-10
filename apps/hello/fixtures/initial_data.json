@@ -84,13 +84,13 @@
     "model": "hello.mycard",
     "fields": {
         "bio": "Was born in Kiev. Studied in school num 210, then in Kiev Polytechnical Institute. Worked in some banks.",
-        "bDate": "1983-01-13",
-        "lName": "Korostelyov",
-        "otherContacts": "mob: 067.693.61.96, second email: ymk_@ukr.net",
-        "fName": "Yuriy",
-        "Skype": "yuriy.torhammer",
-        "Jabber": "ykorostelyov@khavr.com",
-        "eMail": "ykorostelyov@gmail.com"
+        "birth_date": "1983-01-13",
+        "last_name": "Korostelyov",
+        "other_contacts": "mob: 067.693.61.96, second email: ymk_@ukr.net",
+        "first_name": "Yuriy",
+        "skype": "yuriy.torhammer",
+        "jabber": "ykorostelyov@khavr.com",
+        "email": "ykorostelyov@gmail.com"
     }
 },
 {
