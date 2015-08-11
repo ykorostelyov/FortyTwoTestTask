@@ -12,8 +12,5 @@ git_ignore
 build
 .noseids
 media
-static
 *.dat
 .env
-
-Mydata/fixtures/001_fixture.txt
