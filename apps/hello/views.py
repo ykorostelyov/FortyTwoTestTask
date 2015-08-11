@@ -10,10 +10,10 @@ log = logging.getLogger('apps')
 # index
 def index(request):
     # Check for Model is present
-    try:
-        mycard = Mycard.objects.get(id=1)
-    except Mycard.DoesNotExist:
-        raise Http404
+    # try:
+    #     mycard = Mycard.objects.get(id=1)
+    # except Mycard.DoesNotExist:
+    #     raise Http404
 
     # log.info('Getting data of model for homepage')
     # log.debug('record for ' + mycard.first_name +
