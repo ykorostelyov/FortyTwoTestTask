@@ -1,43 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-
-        <div id="container">
-            <div style="background:#ffffff; width:100px; float:left;">
-                <div style = "height: 22px;">Name: </div>
-                <div style = "height: 22px;">Last Name: </div>
-                <div style = "height: 22px;">Date of birth: </div>
-                <div style = "height: 22px;">Bio: </div>
-            </div>
-
-            <div style="background:#ffffff; width:250px; float:left;">
-                <div style = "height: 22px;">{{ first_result.first_name }}</div>
-                <div style = "height: 22px;">{{ first_result.last_name }}</div>
-                <div style = "height: 22px;">{{ first_result.birth_date }}</div>
-                <div style = "height: 22px;">{{ first_result.bio|linebreaks }}</div>
-            </div>
-
-            <div style="background:#ffffff; width:80px; float:left;"><br> </div>
-
-            <div style="background:#ffffff; width:110px; float:left;">
-                <div style = "height: 22px;"><b>Contacts: </b></div>
-                <div style = "height: 22px;">Email: </div>
-                <div style = "height: 22px;">Jabber: </div>
-                <div style = "height: 22px;">Skype: </div>
-                <div style = "height: 22px;">Other contacts: </div>
-            </div>
-
-            <div style="background:#ffffff; width:200px; float:left;">
-                <div style = "height: 22px;"></div>
-                <div style = "height: 22px;">{{ first_result.email }}</div>
-                <div style = "height: 22px;">{{ first_result.jabber }}</div>
-                <div style = "height: 22px;">{{ first_result.skype }}</div>
-                <div style = "height: 22px;">{{ first_result.other_contacts|linebreaks }}</div>
-            </div>
+    <div id="container">
+        <div style="background:#ffffff; width:100px; float:left;">
+            <div style = "height: 22px;">Name: </div>
+            <div style = "height: 22px;">Last Name: </div>
+            <div style = "height: 22px;">Date of birth: </div>
+            <div style = "height: 22px;">Bio: </div>
         </div>
-    <div style="background:#ff79a9; height: 52px; width:200px; ">
-        <br>
-        <br>
-        <a href="admin">Admin page</a>
-    </div>
 
+        <div style="background:#ffffff; width:250px; float:left;">
+            <div style = "height: 22px;">{{ first_result.first_name }}</div>
+            <div style = "height: 22px;">{{ first_result.last_name }}</div>
+            <div style = "height: 22px;">{{ first_result.birth_date }}</div>
+            <div style = "height: 22px;">{{ first_result.bio|linebreaks }}</div>
+        </div>
+
+        <div style="background:#ffffff; width:80px; float:left;"><br> </div>
+
+        <div style="background:#ffffff; width:110px; float:left;">
+            <div style = "height: 22px;"><b>Contacts: </b></div>
+            <div style = "height: 22px;">Email: </div>
+            <div style = "height: 22px;">Jabber: </div>
+            <div style = "height: 22px;">Skype: </div>
+            <div style = "height: 22px;">Other contacts: </div>
+        </div>
+
+        <div style="background:#ffffff; width:200px; float:left;">
+            <div style = "height: 22px;"></div>
+            <div style = "height: 22px;">{{ first_result.email }}</div>
+            <div style = "height: 22px;">{{ first_result.jabber }}</div>
+            <div style = "height: 22px;">{{ first_result.skype }}</div>
+            <div style = "height: 22px;">{{ first_result.other_contacts|linebreaks }}</div>
+        </div>
+    </div>
+    <a href="admin">Admin page</a>
 {% endblock content %}

@@ -11,3 +11,6 @@ class Mycard(models.Model):
     skype = models.CharField(max_length=100)
     bio = models.TextField()
     other_contacts = models.TextField()
+
+    def __unicode__(self):
+        return self.first_name + ' ' + self.last_name
