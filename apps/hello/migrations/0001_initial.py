@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Mycard'
-        db.create_table(u'Mydata_mycard', (
+        db.create_table(u'hello_mycard', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
@@ -25,7 +25,7 @@ class Migration(SchemaMigration):
 
     def backwards(self, orm):
         # Deleting model 'Mycard'
-        db.delete_table(u'Mydata_mycard')
+        db.delete_table(u'hello_mycard')
 
 
     models = {
