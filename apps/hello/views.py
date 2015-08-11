@@ -1,9 +1,5 @@
 from django.shortcuts import render_to_response
 from .models import Mycard
-import logging
-
-
-log = logging.getLogger('apps')
 
 
 # index
