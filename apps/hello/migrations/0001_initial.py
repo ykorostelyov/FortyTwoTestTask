@@ -11,14 +11,14 @@ class Migration(SchemaMigration):
         # Adding model 'Mycard'
         db.create_table(u'Mydata_mycard', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('fName', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('lName', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('bDate', self.gf('django.db.models.fields.DateField')()),
-            ('eMail', self.gf('django.db.models.fields.EmailField')(max_length=75)),
-            ('Jabber', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('Skype', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('first_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('last_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('birth_date', self.gf('django.db.models.fields.DateField')()),
+            ('email', self.gf('django.db.models.fields.emailField')(max_length=75)),
+            ('jabber', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('skype', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('bio', self.gf('django.db.models.fields.CharField')(max_length=1024)),
-            ('otherContacts', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('other_contacts', self.gf('django.db.models.fields.CharField')(max_length=200)),
         ))
         db.send_create_signal(u'hello', ['Mycard'])
 
@@ -30,16 +30,16 @@ class Migration(SchemaMigration):
 
     models = {
         u'hello.mycard': {
-            'Jabber': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'jabber': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'Meta': {'object_name': 'Mycard'},
-            'Skype': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'bDate': ('django.db.models.fields.DateField', [], {}),
+            'skype': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'birth_date': ('django.db.models.fields.DateField', [], {}),
             'bio': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
-            'eMail': ('django.db.models.fields.EmailField', [], {'max_length': '75'}),
-            'fName': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'email': ('django.db.models.fields.emailField', [], {'max_length': '75'}),
+            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'lName': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'otherContacts': ('django.db.models.fields.CharField', [], {'max_length': '200'})
+            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'other_contacts': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         }
     }
 
