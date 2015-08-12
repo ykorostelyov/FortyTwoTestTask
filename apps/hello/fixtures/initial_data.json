@@ -83,7 +83,7 @@
     "pk": 1,
     "model": "hello.mycard",
     "fields": {
-        "bio": "Was born in Kiev. Studied in school num 210, then in Kiev Polytechnical Institute. Worked in some banks.",
+        "bio": "Русским языком написано",
         "bDate": "1983-01-13",
         "lName": "Korostelyov",
         "otherContacts": "mob: 067.693.61.96, second email: ymk_@ukr.net",
