@@ -29,14 +29,14 @@
     "pk": 1,
     "model": "hello.mycard",
     "fields": {
-        "bio": "\u0426\u0435\u043b\u043e\u0435 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u0440\u0430\u0432\u043e\u0441\u043b\u0430\u0432\u043d\u044b\u043c \u042e\u043d\u0438\u043a\u043e\u0434\u043e\u043c",
-        "bDate": "1983-01-13",
-        "lName": "Korostelyov",
-        "otherContacts": "\u0422\u0443\u0442 \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u043a\u043e\u043d\u0442\u0430\u043a\u0442 040404040404040404040404040404040404040404040404040404040404040404",
-        "fName": "Yuriy",
-        "Skype": "yuriy.torhammer",
-        "Jabber": "ykorostelyov@khavr.com",
-        "eMail": "ykorostelyov@gmail.com"
+        "bio": "Биография православным Юникодом. \r\nЕще и многострочная",
+        "first_name": "Yuriy",
+        "last_name": "Korostelyov",
+        "other_contacts": "mob: 067.693.61.96, \r\nsecondary email: ymk_@ukr.net",
+        "skype": "yuriy.torhammer",
+        "birth_date": "1983-01-13",
+        "jabber": "ykorostelyov@khavr.com",
+        "email": "ykorostelyov@gmail.com"
     }
 },
 {
