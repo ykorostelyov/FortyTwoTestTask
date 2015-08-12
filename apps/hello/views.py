@@ -1,20 +1,15 @@
-from django.test import TestCase
+from django.shortcuts import render_to_response
 from .models import Mycard
+import os
 
 
-class TestMycardModel(TestCase):
-    Skype_str = "yuriy.torhammer"
+PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
+# base dir
+B_DIR = os.path.dirname(PROJECT_DIR)
 
-    def setUp(self):
-        Mycard.objects.create(fName='Yuriy',
-                              lName='Korostelyov',
-                              Skype=self.Skype_str,
-                              bDate="1983-01-13",
-                              Jabber='ykorostelyov@khavr.com'
-                              )
 
-    def test_person(self):
-        """Testing of My card creatig"""
-        mycard = Mycard.objects.get(id='1')
-        self.assertEqual(mycard.Skype, self.Skype_str)
-        self.assertEqual(mycard.Jabber, 'ykorostelyov@khavr.com')
+# index
+def index(request):
+    all_result = Mycard.objects.all()
+    frst_result = all_result.filter()[:1]
+    return render_to_response("hello/index.html", {'frst_result': frst_result})
