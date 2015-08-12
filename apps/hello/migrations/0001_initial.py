@@ -41,8 +41,8 @@ class Migration(SchemaMigration):
 
         # Adding field 'Mycard.birth_date'
         db.add_column(u'hello_mycard', 'birth_date',
-                      self.gf('django.db.models.fields.DateField')(default=1),
-                      keep_default=False)
+                      self.gf('django.db.models.fields.DateField')(default="1983-01-13"),
+                      keep_default=True)
 
         # Adding field 'Mycard.email'
         db.add_column(u'hello_mycard', 'email',
