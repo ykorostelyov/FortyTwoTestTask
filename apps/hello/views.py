@@ -1,24 +1,20 @@
-from django.shortcuts import render_to_response
+from django.test import TestCase
 from .models import Mycard
-from django.http import Http404
-import logging
 
 
-log = logging.getLogger('apps')
+class TestMycardModel(TestCase):
+    Skype_str = "yuriy.torhammer"
 
+    def setUp(self):
+        Mycard.objects.create(fName='Yuriy',
+                              lName='Korostelyov',
+                              Skype=self.Skype_str,
+                              bDate="1983-01-13",
+                              Jabber='ykorostelyov@khavr.com'
+                              )
 
-# index
-def index(request):
-    try:
-        mycard = Mycard.objects.get(id=1)
-    except Mycard.DoesNotExist:
-        raise Http404
-
-    log.info('Getting data of model for homepage')
-    log.debug('record for ' + mycard.first_name +
-              ' ' + mycard.last_name + ' person')
-    log.debug('Displayng russian characters. bio = ' + mycard.bio)
-
-    first_result = Mycard.objects.order_by('id')[0]
-    return render_to_response("hello/index.html",
-                              {'first_result': first_result})
+    def test_person(self):
+        """Testing of My card creatig"""
+        mycard = Mycard.objects.get(id='1')
+        self.assertEqual(mycard.Skype, self.Skype_str)
+        self.assertEqual(mycard.Jabber, 'ykorostelyov@khavr.com')
