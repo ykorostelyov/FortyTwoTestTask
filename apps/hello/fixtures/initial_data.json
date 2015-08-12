@@ -1,9 +1,35 @@
 [
 {
     "pk": 1,
+    "model": "auth.user",
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-08-12T14:27:21.822Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$12000$4OBKerrpjSeV$Ecj6kBm1/vlsfMLZhZIgQNgEjDr91Z5zZDy1Cl4PeBA=",
+        "email": "ykorostelyov@gmail.com",
+        "date_joined": "2015-08-12T14:26:12.276Z"
+    }
+},
+{
+    "pk": "13mdzm800zzzcns4ca1mfjwham4ki1d6",
+    "model": "sessions.session",
+    "fields": {
+        "expire_date": "2015-08-26T14:27:21.824Z",
+        "session_data": "ZTJjMGJjYjAzNzk2NGJjZjJkZTdhYzZmZWIzYzgzMDIyZjg5MThjYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
+    }
+},
+{
+    "pk": 1,
     "model": "hello.mycard",
     "fields": {
-        "bio": "Целое предложение русскими буквами",
+        "bio": "Биография православным Юникодом. \r\nЕще и многострочная",
         "first_name": "Yuriy",
         "last_name": "Korostelyov",
         "other_contacts": "mob: 067.693.61.96, \r\nsecondary email: ymk_@ukr.net",
@@ -14,21 +40,30 @@
     }
 },
 {
-    "pk": 1, 
-    "model": "auth.user", 
+    "pk": 1,
+    "model": "south.migrationhistory",
     "fields": {
-        "username": "admin", 
-        "first_name": "", 
-        "last_name": "", 
-        "is_active": true, 
-        "is_superuser": true, 
-        "is_staff": true, 
-        "last_login": "2015-08-10T18:44:05.746Z", 
-        "groups": [], 
-        "user_permissions": [], 
-        "password": "pbkdf2_sha256$12000$ogo2G7inYEnL$Sa34/byQtEX8z2aQadBx/1IGs868AT+E8E/ikQEGb+Q=", 
-        "email": "admin@admin.com", 
-        "date_joined": "2015-08-04T21:39:21.220Z"
+        "applied": "2015-08-12T14:26:39.235Z",
+        "app_name": "hello",
+        "migration": "0001_initial"
+    }
+},
+{
+    "pk": 1,
+    "model": "admin.logentry",
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-08-12T14:29:19.009Z",
+        "object_repr": "Mycard object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "hello",
+            "mycard"
+        ]
     }
 }
 ]
