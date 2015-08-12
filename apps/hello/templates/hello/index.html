@@ -1,14 +1,19 @@
 {% extends "base.html" %}
+{% block title %}Personal information{% endblock title %}
+{% block extra_head %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/mycard.css' %}">
+{% endblock extra_head %}
 {% block content %}
     <div id="container">
-        <div style="background:#ffffff; width:100px; float:left;">
+        <div class = "mydata_name"; style="background:#ffffff; width:100px; float:left;">
             <div style = "height: 22px;">Name: </div>
             <div style = "height: 22px;">Last Name: </div>
             <div style = "height: 22px;">Date of birth: </div>
             <div style = "height: 22px;">Bio: </div>
         </div>
 
-        <div style="background:#ffffff; width:250px; float:left;">
+        <div class = "mydata_value" style="background:#ffffff; width:250px; float:left;">
             <div style = "height: 22px;">{{ first_result.first_name }}</div>
             <div style = "height: 22px;">{{ first_result.last_name }}</div>
             <div style = "height: 22px;">{{ first_result.birth_date }}</div>
@@ -17,7 +22,7 @@
 
         <div style="background:#ffffff; width:80px; float:left;"><br> </div>
 
-        <div style="background:#ffffff; width:110px; float:left;">
+        <div class = "mydata_name"; style="background:#ffffff; width:110px; float:left;">
             <div style = "height: 22px;"><b>Contacts: </b></div>
             <div style = "height: 22px;">Email: </div>
             <div style = "height: 22px;">Jabber: </div>
@@ -25,7 +30,7 @@
             <div style = "height: 22px;">Other contacts: </div>
         </div>
 
-        <div style="background:#ffffff; width:200px; float:left;">
+        <div class = "mydata_value" style="background:#ffffff; width:200px; float:left;">
             <div style = "height: 22px;"></div>
             <div style = "height: 22px;">{{ first_result.email }}</div>
             <div style = "height: 22px;">{{ first_result.jabber }}</div>
