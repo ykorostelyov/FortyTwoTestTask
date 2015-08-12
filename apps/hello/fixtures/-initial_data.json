@@ -1,0 +1,34 @@
+[
+{
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": null,
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$t4eQsVNpAjgo$Py32zRFze5ig3z4nFxvVZPEB0O6ST4gQy7HnG1hY9h4=",
+        "email": "zzz@zzz.com",
+        "date_joined": "2015-08-04T07:42:19.557Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "bio": "Was born in Kiev. Studied in school #210, then in Kiev Polytechnical Institute. Worked in some banks.",
+        "bDate": "1983-01-13",
+        "lName": "Korostelyov",
+        "otherContacts": "mob: 067.693.61.96",
+        "fName": "Yuriy",
+        "Skype": "yuriy.torhammer",
+        "Jabber": "ykorostelyov@khavr.com",
+        "eMail": "ykorostelyov@gmail.com"
+    },
+    "model": "Mydata.mycard",
+    "pk": 1
+}
+]

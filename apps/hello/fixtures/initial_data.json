@@ -1,34 +1,69 @@
 [
 {
     "pk": 1,
-    "model": "hello.mycard",
+    "model": "auth.user",
     "fields": {
-        "bio": "Целое предложение русскими буквами",
-        "first_name": "Yuriy",
-        "last_name": "Korostelyov",
-        "other_contacts": "mob: 067.693.61.96, \r\nsecondary email: ymk_@ukr.net",
-        "skype": "yuriy.torhammer",
-        "birth_date": "1983-01-13",
-        "jabber": "ykorostelyov@khavr.com",
-        "email": "ykorostelyov@gmail.com"
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-08-12T14:27:21.822Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$12000$4OBKerrpjSeV$Ecj6kBm1/vlsfMLZhZIgQNgEjDr91Z5zZDy1Cl4PeBA=",
+        "email": "ykorostelyov@gmail.com",
+        "date_joined": "2015-08-12T14:26:12.276Z"
     }
 },
 {
-    "pk": 1, 
-    "model": "auth.user", 
+    "pk": "13mdzm800zzzcns4ca1mfjwham4ki1d6",
+    "model": "sessions.session",
     "fields": {
-        "username": "admin", 
-        "first_name": "", 
-        "last_name": "", 
-        "is_active": true, 
-        "is_superuser": true, 
-        "is_staff": true, 
-        "last_login": "2015-08-10T18:44:05.746Z", 
-        "groups": [], 
-        "user_permissions": [], 
-        "password": "pbkdf2_sha256$12000$ogo2G7inYEnL$Sa34/byQtEX8z2aQadBx/1IGs868AT+E8E/ikQEGb+Q=", 
-        "email": "admin@admin.com", 
-        "date_joined": "2015-08-04T21:39:21.220Z"
+        "expire_date": "2015-08-26T14:27:21.824Z",
+        "session_data": "ZTJjMGJjYjAzNzk2NGJjZjJkZTdhYzZmZWIzYzgzMDIyZjg5MThjYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
+    }
+},
+{
+    "pk": 1,
+    "model": "hello.mycard",
+    "fields": {
+        "bio": "\u0426\u0435\u043b\u043e\u0435 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u0440\u0430\u0432\u043e\u0441\u043b\u0430\u0432\u043d\u044b\u043c \u042e\u043d\u0438\u043a\u043e\u0434\u043e\u043c",
+        "bDate": "1983-01-13",
+        "lName": "Korostelyov",
+        "otherContacts": "\u0422\u0443\u0442 \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u043a\u043e\u043d\u0442\u0430\u043a\u0442 040404040404040404040404040404040404040404040404040404040404040404",
+        "fName": "Yuriy",
+        "Skype": "yuriy.torhammer",
+        "Jabber": "ykorostelyov@khavr.com",
+        "eMail": "ykorostelyov@gmail.com"
+    }
+},
+{
+    "pk": 1,
+    "model": "south.migrationhistory",
+    "fields": {
+        "applied": "2015-08-12T14:26:39.235Z",
+        "app_name": "hello",
+        "migration": "0001_initial"
+    }
+},
+{
+    "pk": 1,
+    "model": "admin.logentry",
+    "fields": {
+        "action_flag": 1,
+        "action_time": "2015-08-12T14:29:19.009Z",
+        "object_repr": "Mycard object",
+        "object_id": "1",
+        "change_message": "",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "hello",
+            "mycard"
+        ]
     }
 }
 ]
