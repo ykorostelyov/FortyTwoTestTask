@@ -1,15 +1,24 @@
 from django.shortcuts import render_to_response
 from .models import Mycard
-import os
+from django.http import Http404
+import logging
 
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
-# base dir
-B_DIR = os.path.dirname(PROJECT_DIR)
+log = logging.getLogger('apps')
 
 
 # index
 def index(request):
-    all_result = Mycard.objects.all()
-    frst_result = all_result.filter()[:1]
-    return render_to_response("hello/index.html", {'frst_result': frst_result})
+    try:
+        mycard = Mycard.objects.get(id=1)
+    except Mycard.DoesNotExist:
+        raise Http404
+
+    log.info('Getting data of model for homepage')
+    log.debug('record for ' + mycard.first_name +
+              ' ' + mycard.last_name + ' person')
+    log.debug('Displayng russian characters. bio = ' + mycard.bio)
+
+    first_result = Mycard.objects.order_by('id')[0]
+    return render_to_response("hello/index.html",
+                              {'first_result': first_result})
