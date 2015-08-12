@@ -17,7 +17,7 @@ def index(request):
     log.info('Getting data of model for homepage')
     log.debug('record for ' + mycard.first_name +
               ' ' + mycard.last_name + ' person')
-    log.debug('Displayng russian characters. bio = ' + mycard.bio)
+    log.debug('Displayng Unicode characters. bio = ' + mycard.bio)
 
     first_result = Mycard.objects.order_by('id')[0]
     return render_to_response("hello/index.html",
