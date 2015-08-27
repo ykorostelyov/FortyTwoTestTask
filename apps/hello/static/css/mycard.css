@@ -13,19 +13,38 @@ body {
     font-family: Helvetica;
 }
 
-li a {
-    color: green;
+.mydata_name {
+    color: #454646;
+    width:120px;
+    float:left;
+    font-family:arial;
+    font-size: 11pt;
 }
 
-.mydata_name {
-  color: #454646;
-  font-family:arial;
-  font-size: 11pt;
+.mydata_empty {
+    width:80px;
+    float:left;
 }
 
 .mydata_value {
-  color: #454646;
-  font-family:arial;
-  font-size: 11pt;
+    width:250px;
+    float:left;
+    font-family:arial;
+    font-size: 11pt;
     color: #9da0a0;
+}
+
+ .inner_cell{
+     height:22px;
+ }
+
+.right_menu {
+    float:right;
+    background:#edebeb;
+    width:100px;
+}
+
+.to_request {
+    height: 22px;
+    clear: left;
 }
