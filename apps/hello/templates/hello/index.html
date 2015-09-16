@@ -2,7 +2,7 @@
 {% block title %}42 Coffee Cups{% endblock title %}
 {% block extra_head %}
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/mycard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock extra_head %}
 {% block content %}
     <div id="container">
@@ -38,7 +38,13 @@
             <div class = "inner_cell">{{ first_result.other_contacts|linebreaks }}</div>
         </div>
         <div class = "right_menu">
-          <a href="admin">Admin page</a>
+            <a href="admin">Admin page</a>
         </div>
+    </div>
+    <div class="to_request">
+        <br>
+        <br>
+        <hr>
+        <a href="{% url 'requests' %}">Go to Requests</a>
     </div>
 {% endblock content %}

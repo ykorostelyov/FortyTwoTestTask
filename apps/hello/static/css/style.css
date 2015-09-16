@@ -48,3 +48,37 @@ body {
     height: 22px;
     clear: left;
 }
+
+.request_header {
+    color: #fffdfd;
+    background: #abb4b4;
+    font-family: Helvetica;
+    font-size: 12pt;
+}
+
+.request_data {
+    color: #707979;
+    font-family: Helvetica;
+    font-size: 11pt;
+}
+
+.request_readed {
+    color: #707979;
+    background: #d6f6d0;
+    font-family: Helvetica;
+    font-size: 11pt;
+}
+
+.request_unreaded {
+    color: #707979;
+    background: #e9f2dc;
+    font-family: Helvetica;
+    font-size: 11pt;
+}
+
+.request_unreaded_from_ajax {
+    color: #707979;
+    background: #c5dbf2;
+    font-family: Helvetica;
+    font-size: 11pt;
+}
