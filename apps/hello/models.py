@@ -27,4 +27,3 @@ class RequestInfo (models.Model):
     uri = models.CharField(max_length=1024)
     status_code = models.CharField(max_length=30)
     user_agent = models.CharField(max_length=1024)
-    is_ajax = models.BooleanField(default=False)
