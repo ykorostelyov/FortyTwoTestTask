@@ -14,6 +14,7 @@ class GetRequest(object):
         try:
             self.save(request, response)
         except Exception as error:
+            # error logging
             print >> sys.stderr, "Error saving request log", error
 
         return response
@@ -21,6 +22,7 @@ class GetRequest(object):
     @staticmethod
     def save(request, response):
         meta = request.META.copy()
+        # excluding technical requests
         if response['Content-Type'] != 'application/json':
             models.RequestInfo(
                 host=request.get_host(),
@@ -29,5 +31,6 @@ class GetRequest(object):
                 uri=request.build_absolute_uri(),
                 status_code=response.status_code,
                 remote_addr=meta.pop('REMOTE_ADDR', None),
-                is_viewed=False
+                is_viewed=False,
+                is_ajax=True
             ).save()

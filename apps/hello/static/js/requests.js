@@ -11,7 +11,7 @@ function add_req (){
             success: function(json) {
                 new_requests_cnt = json['new_requests_cnt'];
 
-                console.log("new_requests_cnt = " + new_requests_cnt);
+                console.log("JS new_requests_cnt = " + new_requests_cnt);
 
                 if (new_requests_cnt > 0){
                     document.title = '(' + new_requests_cnt +') New requests';
@@ -22,7 +22,6 @@ function add_req (){
                 requests_array = json['last_10_requests'];
 
                 console.log("last_10_requests = " + requests_array.toString);
-
                 for(var i=requests_array.length-1; i >= 0; i--){
                     var request_record = $('<tr class ="request_unreaded"></tr>');
                     request_record.append( '<td>' + requests_array[i]['id'] +'</td>');
@@ -32,7 +31,7 @@ function add_req (){
                     request_record.append( '<td>' + requests_array[i]['remote_addr'] +'</td>');
                     $('#webrequest_block').prepend(request_record);
 
-                    if ($('tbody tr').length >= 10){
+                    if ($('tbody tr').length > 10){
                         $('tbody tr:last').remove();
                     }
                 }
@@ -50,5 +49,5 @@ $(document).ready(function(){
       add_req();
   });
 
-    setInterval('add_req()',3000);
+    setInterval('add_req()',1000);
 });

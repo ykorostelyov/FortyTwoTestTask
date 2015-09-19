@@ -24,6 +24,7 @@ class RequestInfo (models.Model):
     path = models.CharField(max_length=1024)
     remote_addr = models.GenericIPAddressField()
     is_viewed = models.BooleanField(default=False)
+    is_ajax = models.BooleanField(default=False)
     uri = models.CharField(max_length=1024)
     status_code = models.CharField(max_length=30)
     user_agent = models.CharField(max_length=1024)

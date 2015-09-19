@@ -2,7 +2,14 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from .models import Mycard
+from .models import RequestInfo
 import datetime
+from selenium import webdriver
+from django.test import LiveServerTestCase
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.common.exceptions import TimeoutException
 
 
 class TestMycardModel(TestCase):
@@ -89,3 +96,73 @@ class TestMycardModel(TestCase):
         # Checking of rendered data
         self.assertEqual(mycard.__unicode__(),
                          str(response.context['first_result']))
+
+
+class SelTest(LiveServerTestCase):
+
+    def setUp(self):
+        self.selenium = webdriver.Firefox()
+        super(SelTest, self).setUp()
+
+    def tearDown(self):
+        self.selenium.quit()
+        super(SelTest, self).tearDown()
+
+
+class TestLiveRequests(SelTest):
+
+    def test_only_10_requests(self):
+        """
+        Show last 10 http requests that are stored by middleware
+        """
+        RequestInfo.objects.all().delete()
+        # calling home 12 times
+        for i in range(12):
+            self.client.get(reverse('home'))
+
+        # more than 10 requests in db
+        self.assertTrue(RequestInfo.objects.all().count() > 10)
+
+        driver = webdriver.Firefox()
+        driver.get('%s%s' % (self.live_server_url, '/requests/'))
+        # only 10 requests rendered
+        self.assertEqual(len(driver.find_elements_by_class_name(
+            'request_unreaded')), 10)
+
+        try:
+            WebDriverWait(self.selenium, 10)\
+                .until(expected_conditions
+                       .presence_of_element_located((By.TAG_NAME,
+                                                    "td")))
+        except TimeoutException:
+            pass
+
+        driver.quit()
+
+    def test_title_count(self):
+        """
+        If there are N new requests, page title should start with (N)
+        """
+        RequestInfo.objects.all().delete()
+        # Must have 3 new requests
+        for i in range(2):
+            self.client.get(reverse('requests'))
+        driver = webdriver.Firefox()
+        driver.get('%s%s' % (self.live_server_url, '/requests/'))
+        self.assertEquals('(3) New requests', driver.title)
+        # Must have 1 new requests
+        RequestInfo.objects.all().delete()
+        driver.get('%s%s' % (self.live_server_url, '/requests/'))
+        self.assertEquals('(1) New requests', driver.title)
+
+        driver.quit()
+
+    def test_render(self):
+        """
+        Checking of rendered data
+        """
+        # Response ok
+        response = self.client.get(reverse('requests'))
+        self.assertEqual(response.status_code, 200)
+        # Using correct template
+        self.assertTemplateUsed(response, 'hello/requests.html')

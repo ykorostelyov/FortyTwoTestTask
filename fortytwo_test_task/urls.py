@@ -9,5 +9,5 @@ urlpatterns = patterns(
     url(r'^requests/', 'hello.views.requests', name='requests'),
     url(r'^requests_api/', 'hello.views.requests_queue',
         name='requests_api'),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls), name='admin'),
 )
