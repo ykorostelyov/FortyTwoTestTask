@@ -101,7 +101,7 @@ class TestMycardModel(TestCase):
 class SelTest(LiveServerTestCase):
 
     def setUp(self):
-        self.selenium = webdriver.Firefox()
+        self.selenium = webdriver.PhantomJS()
         super(SelTest, self).setUp()
 
     def tearDown(self):
@@ -123,7 +123,7 @@ class TestLiveRequests(SelTest):
         # more than 10 requests in db
         self.assertTrue(RequestInfo.objects.all().count() > 10)
 
-        driver = webdriver.Firefox()
+        driver = webdriver.PhantomJS()
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
         # only 10 requests rendered
         self.assertEqual(len(driver.find_elements_by_class_name(
@@ -147,7 +147,7 @@ class TestLiveRequests(SelTest):
         # Must have 3 new requests
         for i in range(2):
             self.client.get(reverse('requests'))
-        driver = webdriver.Firefox()
+        driver = webdriver.PhantomJS()
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
         self.assertEquals('(3) New requests', driver.title)
         # Must have 1 new requests
