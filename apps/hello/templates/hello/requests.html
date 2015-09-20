@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 {% block extra_head %}
-
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{% static 'js/requests.js' %}"></script>
 {% endblock extra_head %}
 
 {% block title %}No New Requests{% endblock title %}
 {% block content %}
-
+	<div id="container">
+        <table class="table table-bordered table-hover table-striped" id="webrequest_block" >
+            <thead>
+            <tr>
+                <th class="request_header"> ID </th>
+                <th class="request_header"> Method </th>
+                <th class="request_header"> Uri </th>
+                <th class="request_header"> Status code </th>
+                <th class="request_header"> Remote address </th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            </table>
+    </div>
+    <hr>
+    <a href="{% url 'home' %}">To main page</a>
 {% endblock content %}
