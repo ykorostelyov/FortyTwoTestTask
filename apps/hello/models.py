@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# my model
+# mycard model
 class Mycard(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -14,3 +14,17 @@ class Mycard(models.Model):
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
+
+
+# Request model
+class RequestInfo (models.Model):
+    date = models.DateTimeField(auto_now=True)
+    host = models.CharField(max_length=1024)
+    method = models.CharField(max_length=30)
+    path = models.CharField(max_length=1024)
+    remote_addr = models.GenericIPAddressField()
+    is_viewed = models.BooleanField(default=False)
+    is_ajax = models.BooleanField(default=False)
+    uri = models.CharField(max_length=1024)
+    status_code = models.CharField(max_length=30)
+    user_agent = models.CharField(max_length=1024)
