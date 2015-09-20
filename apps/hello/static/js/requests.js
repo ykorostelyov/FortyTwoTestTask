@@ -10,7 +10,6 @@ function add_req (){
             type: "GET",
             success: function(json) {
                 new_requests_cnt = json['new_requests_cnt'];
-
                 console.log("JS new_requests_cnt = " + new_requests_cnt);
 
                 if (new_requests_cnt > 0){
@@ -20,7 +19,6 @@ function add_req (){
                 }
 
                 requests_array = json['last_10_requests'];
-
                 console.log("last_10_requests = " + requests_array.toString);
                 for(var i=requests_array.length-1; i >= 0; i--){
                     var request_record = $('<tr class ="request_unreaded"></tr>');
