@@ -8,126 +8,31 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting field 'Mycard.lName'
-        db.delete_column(u'hello_mycard', 'lName')
+        # Adding model 'RequestInfo'
+        db.create_table(u'hello_requestinfo', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
+            ('host', self.gf('django.db.models.fields.CharField')(max_length=1024)),
+            ('method', self.gf('django.db.models.fields.CharField')(max_length=30)),
+            ('path', self.gf('django.db.models.fields.CharField')(max_length=1024)),
+            ('remote_addr', self.gf('django.db.models.fields.GenericIPAddressField')(max_length=39)),
+            ('is_viewed', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('is_ajax', self.gf('django.db.models.fields.BooleanField')(
+                default=False)),
+            ('uri', self.gf('django.db.models.fields.CharField')(max_length=1024)),
+            ('status_code', self.gf('django.db.models.fields.CharField')(max_length=30)),
+            ('user_agent', self.gf('django.db.models.fields.CharField')(max_length=1024)),
+        ))
+        db.send_create_signal(u'hello', ['RequestInfo'])
 
-        # Deleting field 'Mycard.otherContacts'
-        db.delete_column(u'hello_mycard', 'otherContacts')
-
-        # Deleting field 'Mycard.fName'
-        db.delete_column(u'hello_mycard', 'fName')
-
-        # Deleting field 'Mycard.bDate'
-        db.delete_column(u'hello_mycard', 'bDate')
-
-        # Deleting field 'Mycard.Skype'
-        db.delete_column(u'hello_mycard', 'Skype')
-
-        # Deleting field 'Mycard.Jabber'
-        db.delete_column(u'hello_mycard', 'Jabber')
-
-        # Deleting field 'Mycard.eMail'
-        db.delete_column(u'hello_mycard', 'eMail')
-
-        # Adding field 'Mycard.first_name'
-        db.add_column(u'hello_mycard', 'first_name',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.last_name'
-        db.add_column(u'hello_mycard', 'last_name',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.birth_date'
-        db.add_column(u'hello_mycard', 'birth_date',
-                      self.gf('django.db.models.fields.DateField')(default="1983-01-13"),
-                      keep_default=True)
-
-        # Adding field 'Mycard.email'
-        db.add_column(u'hello_mycard', 'email',
-                      self.gf('django.db.models.fields.EmailField')(default=1, max_length=75),
-                      keep_default=False)
-
-        # Adding field 'Mycard.jabber'
-        db.add_column(u'hello_mycard', 'jabber',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.skype'
-        db.add_column(u'hello_mycard', 'skype',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.other_contacts'
-        db.add_column(u'hello_mycard', 'other_contacts',
-                      self.gf('django.db.models.fields.TextField')(default=1),
-                      keep_default=False)
-
-
-        # Changing field 'Mycard.bio'
-        db.alter_column(u'hello_mycard', 'bio', self.gf('django.db.models.fields.TextField')())
 
     def backwards(self, orm):
-        # Adding field 'Mycard.lName'
-        db.add_column(u'hello_mycard', 'lName',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
+        # Deleting model 'Mycard'
+        db.delete_table(u'hello_mycard')
 
-        # Adding field 'Mycard.otherContacts'
-        db.add_column(u'hello_mycard', 'otherContacts',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=200),
-                      keep_default=False)
+        # Deleting model 'RequestInfo'
+        db.delete_table(u'hello_requestinfo')
 
-        # Adding field 'Mycard.fName'
-        db.add_column(u'hello_mycard', 'fName',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.bDate'
-        db.add_column(u'hello_mycard', 'bDate',
-                      self.gf('django.db.models.fields.DateField')(default=1),
-                      keep_default=False)
-
-        # Adding field 'Mycard.Skype'
-        db.add_column(u'hello_mycard', 'Skype',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.Jabber'
-        db.add_column(u'hello_mycard', 'Jabber',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=100),
-                      keep_default=False)
-
-        # Adding field 'Mycard.eMail'
-        db.add_column(u'hello_mycard', 'eMail',
-                      self.gf('django.db.models.fields.EmailField')(default=1, max_length=75),
-                      keep_default=False)
-
-        # Deleting field 'Mycard.first_name'
-        db.delete_column(u'hello_mycard', 'first_name')
-
-        # Deleting field 'Mycard.last_name'
-        db.delete_column(u'hello_mycard', 'last_name')
-
-        # Deleting field 'Mycard.birth_date'
-        db.delete_column(u'hello_mycard', 'birth_date')
-
-        # Deleting field 'Mycard.email'
-        db.delete_column(u'hello_mycard', 'email')
-
-        # Deleting field 'Mycard.jabber'
-        db.delete_column(u'hello_mycard', 'jabber')
-
-        # Deleting field 'Mycard.skype'
-        db.delete_column(u'hello_mycard', 'skype')
-
-        # Deleting field 'Mycard.other_contacts'
-        db.delete_column(u'hello_mycard', 'other_contacts')
-
-
-        # Changing field 'Mycard.bio'
-        db.alter_column(u'hello_mycard', 'bio', self.gf('django.db.models.fields.CharField')(max_length=1024))
 
     models = {
         u'hello.mycard': {
@@ -141,6 +46,21 @@ class Migration(SchemaMigration):
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'other_contacts': ('django.db.models.fields.TextField', [], {}),
             'skype': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        u'hello.requestinfo': {
+            'Meta': {'object_name': 'RequestInfo'},
+            'date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'host': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_viewed': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'is_ajax': ('django.db.models.fields.BooleanField', [],
+                     {'default': 'False'}),
+            'method': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
+            'path': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
+            'remote_addr': ('django.db.models.fields.GenericIPAddressField', [], {'max_length': '39'}),
+            'status_code': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
+            'uri': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
+            'user_agent': ('django.db.models.fields.CharField', [], {'max_length': '1024'})
         }
     }
 
