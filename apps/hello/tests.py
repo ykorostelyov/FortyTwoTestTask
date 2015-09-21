@@ -69,6 +69,7 @@ class TestMycardModel(TestCase):
         """
         Using of rendering data, not static
         """
+        
         # Deleting all data to check response
         Mycard.objects.all().delete()
         response = self.client.get(reverse('home'))
