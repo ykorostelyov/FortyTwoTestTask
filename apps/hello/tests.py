@@ -69,7 +69,6 @@ class TestMycardModel(TestCase):
         """
         Using of rendering data, not static
         """
-        
         # Deleting all data to check response
         Mycard.objects.all().delete()
         response = self.client.get(reverse('home'))
@@ -83,7 +82,6 @@ class TestMycardModel(TestCase):
                                        skype=u'yuriy.torhammer',
                                        birth_date=u'1983-01-13',
                                        other_contacts=u'Другие контакты3')
-
         # calling home view with rendered data
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
