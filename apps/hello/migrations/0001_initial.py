@@ -9,6 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'RequestInfo'
+        db.delete_table(u'hello_requestinfo')
         db.create_table(u'hello_requestinfo', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('date', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
