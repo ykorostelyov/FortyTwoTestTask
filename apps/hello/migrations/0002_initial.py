@@ -21,7 +21,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'RequestInfo.remote_addr'
         db.add_column(u'hello_requestinfo', 'remote_addr',
-                      self.gf('django.db.models.fields.GenericIPAddressField')(default=1, max_length=39),
+                      self.gf('django.db.models.fields.GenericIPAddressField')(default="127.0.0.1", max_length=39),
                       keep_default=False)
 
         # Adding field 'RequestInfo.is_viewed'
