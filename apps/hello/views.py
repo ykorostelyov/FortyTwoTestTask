@@ -1,9 +1,11 @@
 from django.shortcuts import render_to_response, render
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from .models import RequestInfo
 from .models import Mycard
 import logging
 import json
+from django.contrib.auth import authenticate, login
+from django.template import RequestContext
 
 
 log = logging.getLogger('apps')
@@ -20,6 +22,19 @@ def index(request):
 
     context = {'first_result': first_result}
     return render_to_response("hello/index.html", context)
+
+
+# index
+def edit(request):
+    # no data checking
+    try:
+        first_result = Mycard.objects.first()
+        log.debug(str(first_result.id) + ' ' + first_result.__unicode__())
+    except:
+        raise Http404
+
+    context = {'first_result': first_result}
+    return render_to_response("hello/edit.html", context)
 
 
 # requests
@@ -53,3 +68,24 @@ def requests_queue(request):
                'new_requests_cnt': len(new_requests)}
     return HttpResponse(json.dumps(context),
                         content_type="application/json")
+
+
+def user_login(request):
+    context = RequestContext(request)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/edit/')
+            else:
+                return HttpResponse("Your account is disabled.")
+        else:
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+
+    else:
+        return render_to_response("hello/login.html", {}, context)

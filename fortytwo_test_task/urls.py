@@ -10,4 +10,6 @@ urlpatterns = patterns(
     url(r'^requests_api/', 'hello.views.requests_queue',
         name='requests_api'),
     url(r'^admin/', include(admin.site.urls), name='admin'),
+    url(r'^login/$', 'hello.views.user_login', name='login'),
+    url(r'^edit/$', 'hello.views.edit', name='edit'),
 )

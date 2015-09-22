@@ -37,6 +37,11 @@
             <div class = "inner_cell">{{ first_result.skype }}</div>
             <div class = "inner_cell">{{ first_result.other_contacts|linebreaks }}</div>
         </div>
+
+        <div class = "mydata_empty">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+
         <div class = "right_menu">
             <a href="admin">Admin page</a>
         </div>

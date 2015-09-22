@@ -166,3 +166,48 @@ class TestLiveRequests(SelTest):
         self.assertEqual(response.status_code, 200)
         # Using correct template
         self.assertTemplateUsed(response, 'hello/requests.html')
+
+
+class TestEditForm(TestCase):
+
+    def test_widget(self):
+        """
+        zzz
+        """
+        pass
+
+    def test_submit(self):
+        """
+        zzz
+        """
+        pass
+
+    def test_indicate_loading_status(self):
+        """
+        zzz
+        """
+        pass
+
+    def test_disabled_form_during_submit(self):
+        """
+        zzz
+        """
+        pass
+
+    def test_authorization_test(self):
+        """
+        zzz
+        """
+        pass
+
+    def test_photo_upload_and_sow(self):
+        """
+        zzz
+        """
+        pass
+
+    def test_photo_scaling(self):
+        """
+        zzz
+        """
+        pass
