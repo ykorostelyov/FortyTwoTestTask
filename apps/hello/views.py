@@ -24,8 +24,6 @@ def index(request):
 
 # requests
 def requests(request):
-    f = RequestInfo.objects.first()
-    print f.__dict__
     return render(request, 'hello/requests.html')
 
 
