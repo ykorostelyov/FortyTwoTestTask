@@ -89,6 +89,7 @@ class TestMycardModel(TestCase):
                                        skype=u'yuriy.torhammer',
                                        birth_date=u'1983-01-13',
                                        other_contacts=u'Другие контакты3')
+
         # calling home view with rendered data
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
@@ -118,11 +119,15 @@ class TestLiveRequests(SelTest):
         # calling home 12 times
         for i in range(12):
             self.client.get(reverse('home'))
+
         # more than 10 requests in db
         self.assertTrue(RequestInfo.objects.all().count() > 10)
 
         driver = webdriver.PhantomJS()
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
+        # only 10 requests rendered
+        self.assertEqual(len(driver.find_elements_by_class_name(
+            'request_unreaded')), 10)
 
         try:
             WebDriverWait(self.selenium, 10)\
@@ -130,11 +135,7 @@ class TestLiveRequests(SelTest):
                        .presence_of_element_located((By.TAG_NAME,
                                                     "td")))
         except TimeoutException:
-            print "time exception"
-
-        # only 10 requests rendered
-        self.assertEqual(len(driver.find_elements_by_class_name(
-            'request_unreaded')), 10)
+            pass
 
         driver.quit()
 
@@ -164,5 +165,4 @@ class TestLiveRequests(SelTest):
         response = self.client.get(reverse('requests'))
         self.assertEqual(response.status_code, 200)
         # Using correct template
-        print "call requests 1 times"
         self.assertTemplateUsed(response, 'hello/requests.html')
