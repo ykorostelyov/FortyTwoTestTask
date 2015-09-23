@@ -124,12 +124,12 @@ class TestLiveRequests(SelTest):
         # more than 10 requests in db
         self.assertTrue(RequestInfo.objects.all().count() > 10)
 
-        print str(RequestInfo.objects.filter(is_viewed =False).all(
+        print str(RequestInfo.objects.filter(is_viewed=False).all(
 
         ).count())
         driver = webdriver.PhantomJS()
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
-        print str(RequestInfo.objects.filter(is_viewed =False).all(
+        print str(RequestInfo.objects.filter(is_viewed=False).all(
 
         ).count())
 
@@ -140,7 +140,7 @@ class TestLiveRequests(SelTest):
                                                     "td")))
         except TimeoutException:
             print "time exception"
-        print str(RequestInfo.objects.filter(is_viewed =False).all(
+        print str(RequestInfo.objects.filter(is_viewed=False).all(
 
         ).count())
         # only 10 requests rendered
