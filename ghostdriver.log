@@ -1,9 +1,9 @@
 PhantomJS is launching GhostDriver...
-[INFO  - 2015-09-20T20:14:21.161Z] GhostDriver - Main - running on port 63417
-[INFO  - 2015-09-20T20:14:21.967Z] Session [2e53d6a0-5fd4-11e5-8a41-53f7040e0a08] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
-[INFO  - 2015-09-20T20:14:21.967Z] Session [2e53d6a0-5fd4-11e5-8a41-53f7040e0a08] - page.customHeaders:  - {}
-[INFO  - 2015-09-20T20:14:21.967Z] Session [2e53d6a0-5fd4-11e5-8a41-53f7040e0a08] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"mac-unknown-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2015-09-20T20:14:21.967Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 2e53d6a0-5fd4-11e5-8a41-53f7040e0a08
-[ERROR - 2015-09-20T20:14:22.176Z] Session [2e53d6a0-5fd4-11e5-8a41-53f7040e0a08] - page.onError - msg: ReferenceError: Can't find variable: $
-[ERROR - 2015-09-20T20:14:22.176Z] Session [2e53d6a0-5fd4-11e5-8a41-53f7040e0a08] - page.onError - stack:
+[INFO  - 2015-09-23T13:46:56.405Z] GhostDriver - Main - running on port 52125
+[INFO  - 2015-09-23T13:46:57.253Z] Session [8ea35d10-61f9-11e5-b443-d9ca14a1ba1a] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
+[INFO  - 2015-09-23T13:46:57.253Z] Session [8ea35d10-61f9-11e5-b443-d9ca14a1ba1a] - page.customHeaders:  - {}
+[INFO  - 2015-09-23T13:46:57.253Z] Session [8ea35d10-61f9-11e5-b443-d9ca14a1ba1a] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"mac-unknown-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2015-09-23T13:46:57.253Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 8ea35d10-61f9-11e5-b443-d9ca14a1ba1a
+[ERROR - 2015-09-23T13:46:57.431Z] Session [8ea35d10-61f9-11e5-b443-d9ca14a1ba1a] - page.onError - msg: ReferenceError: Can't find variable: $
+[ERROR - 2015-09-23T13:46:57.431Z] Session [8ea35d10-61f9-11e5-b443-d9ca14a1ba1a] - page.onError - stack:
   (anonymous function) (http://localhost:8081/static/js/requests.js:43)
