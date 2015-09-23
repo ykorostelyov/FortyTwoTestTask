@@ -114,24 +114,15 @@ class TestLiveRequests(SelTest):
         """
         Show last 10 http requests that are stored by middleware
         """
-        print "test_only_10_requests"
         RequestInfo.objects.all().delete()
         # calling home 12 times
         for i in range(12):
             self.client.get(reverse('home'))
-        print str(RequestInfo.objects.all().count())
-
         # more than 10 requests in db
         self.assertTrue(RequestInfo.objects.all().count() > 10)
 
-        print str(RequestInfo.objects.filter(is_viewed=False).all(
-
-        ).count())
         driver = webdriver.PhantomJS()
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
-        print str(RequestInfo.objects.filter(is_viewed=False).all(
-
-        ).count())
 
         try:
             WebDriverWait(self.selenium, 10)\
@@ -140,9 +131,7 @@ class TestLiveRequests(SelTest):
                                                     "td")))
         except TimeoutException:
             print "time exception"
-        print str(RequestInfo.objects.filter(is_viewed=False).all(
 
-        ).count())
         # only 10 requests rendered
         self.assertEqual(len(driver.find_elements_by_class_name(
             'request_unreaded')), 10)
@@ -153,19 +142,15 @@ class TestLiveRequests(SelTest):
         """
         If there are N new requests, page title should start with (N)
         """
-        print "test_title_count"
         RequestInfo.objects.all().delete()
         # Must have 3 new requests
-        print "call requests 2 times"
         for i in range(2):
             self.client.get(reverse('requests'))
         driver = webdriver.PhantomJS()
-        print "call requests 1 times"
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
         self.assertEquals('(3) New requests', driver.title)
         # Must have 1 new requests
         RequestInfo.objects.all().delete()
-        print "call requests 1 times"
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
         self.assertEquals('(1) New requests', driver.title)
 
