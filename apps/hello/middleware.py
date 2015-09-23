@@ -34,3 +34,4 @@ class GetRequest(object):
                 is_viewed=False,
                 is_ajax=True
             ).save()
+        print 'add record'
