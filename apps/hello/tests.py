@@ -179,7 +179,7 @@ class TestEditForm(TestCase):
         """
         c = Client()
         response = c.get('/accounts/login/')
-        self.assertEquals(response.status_code, 404)
+        self.assertEquals(response.status_code, 200)
 
     def test_edit_login_required(self):
         """
@@ -194,7 +194,7 @@ class TestEditForm(TestCase):
         c = Client()
         c.login(username="admin", password="admin")
         response = c.get(reverse('edit'))
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
         # Is correct template used
         self.assertTemplateUsed(response, 'hello/edit.html')
 
@@ -221,7 +221,7 @@ class TestEditForm(TestCase):
         c.login(username='admin', password='admin')
         response = c.post('/edit/', my_data_dict, follow=True)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Mycard.objects.count(), 2)
+        self.assertEqual(Mycard.objects.count(), 1)
         # Rendered content
         self.assertContains(response, my_data_dict['first_name'])
         self.assertContains(response, my_data_dict['last_name'])
@@ -240,3 +240,4 @@ class TestEditForm(TestCase):
         self.assertEqual(mycard.skype, my_data_dict['skype'])
         self.assertEqual(mycard.bio, escape(my_data_dict['bio']))
         self.assertEqual(mycard.other_contacts, my_data_dict['other_contacts'])
+
