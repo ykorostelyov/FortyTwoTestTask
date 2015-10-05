@@ -240,4 +240,3 @@ class TestEditForm(TestCase):
         self.assertEqual(mycard.skype, my_data_dict['skype'])
         self.assertEqual(mycard.bio, escape(my_data_dict['bio']))
         self.assertEqual(mycard.other_contacts, my_data_dict['other_contacts'])
-
