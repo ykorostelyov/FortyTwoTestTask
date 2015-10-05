@@ -8,10 +8,9 @@
 
 {% block title %}No New Requests{% endblock title %}
 {% block content %}
-
-	<div id="container">
-        <table class="table table-bordered table-hover table-striped" id="webrequest_block" >
-            <thead>
+    <div id="container" class="col-sm-9">
+        <table class="table table-bordered table-hover table-striped col-sm-7"
+               id="webrequest_block" >  <thead>
             <tr>
                 <th class="request_header"> ID </th>
                 <th class="request_header"> Method </th>
@@ -26,5 +25,4 @@
     </div>
     <hr>
     <a href="{% url 'home' %}">To main page</a>
-
 {% endblock content %}

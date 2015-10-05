@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}42 Coffee Cups{% endblock title %}
 {% block extra_head %}
-
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock extra_head %}
@@ -38,12 +37,22 @@
             <div class = "inner_cell">{{ first_result.skype }}</div>
             <div class = "inner_cell">{{ first_result.other_contacts|linebreaks }}</div>
         </div>
+     
+        <div class = "mydata_empty">
+            <a href="{% url 'login' %}">Login</a>
+        </div>
 
         <div class = "right_menu">
             <a href="admin">Admin page</a>
         </div>
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="to_request">
         <br>
         <br>
