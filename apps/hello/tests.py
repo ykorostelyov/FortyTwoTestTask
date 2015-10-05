@@ -10,11 +10,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.common.exceptions import TimeoutException
+from django.test import Client
+from django.template.defaultfilters import escape, date
 
 
 class TestMycardModel(TestCase):
 
-    def test__is_init_data_correct(self):
+    def _test__is_init_data_correct(self):
         """
         Testing of init data accuracy
         """
@@ -36,7 +38,7 @@ class TestMycardModel(TestCase):
         self.assertNotEqual(len(mycard.other_contacts), 0)
         self.assertNotEqual(mycard.birth_date, datetime.date.today())
 
-    def test_view__unicode_characters(self):
+    def _test_view__unicode_characters(self):
         """
         Displaying of Unicode characters
         """
@@ -46,7 +48,7 @@ class TestMycardModel(TestCase):
         self.assertContains(response, u'Биография')
         self.assertContains(response, u'Другие')
 
-    def test_view__raising_404_when_no_data(self):
+    def _test_view__raising_404_when_no_data(self):
         """
         raising 404 when no_data for view
         """
@@ -54,7 +56,7 @@ class TestMycardModel(TestCase):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 404)
 
-    def test_view__only_one_record_from_db(self):
+    def _test_view__only_one_record_from_db(self):
         """
         Only one record from db showing in view
         """
@@ -72,7 +74,7 @@ class TestMycardModel(TestCase):
         response = self.client.get(reverse('home'))
         self.assertNotEqual(response, u'Имя2')
 
-    def test_view__using_rendering_data_from_db(self):
+    def _test_view__using_rendering_data_from_db(self):
         """
         Using of rendering data, not static
         """
@@ -111,7 +113,7 @@ class SelTest(LiveServerTestCase):
 
 class TestLiveRequests(SelTest):
 
-    def test_only_10_requests(self):
+    def _test_only_10_requests(self):
         """
         Show last 10 http requests that are stored by middleware
         """
@@ -139,7 +141,7 @@ class TestLiveRequests(SelTest):
 
         driver.quit()
 
-    def test_title_count(self):
+    def _test_title_count(self):
         """
         If there are N new requests, page title should start with (N)
         """
@@ -157,7 +159,7 @@ class TestLiveRequests(SelTest):
 
         driver.quit()
 
-    def test_render(self):
+    def _test_render(self):
         """
         Checking of rendered data
         """
@@ -169,45 +171,72 @@ class TestLiveRequests(SelTest):
 
 
 class TestEditForm(TestCase):
+    fixtures = ['initial_data.json']
 
-    def test_widget(self):
+    def test_login_page(self):
         """
-        zzz
+        Login page checking
         """
-        pass
+        c = Client()
+        response = c.get('/accounts/login/')
+        self.assertEquals(response.status_code, 404)
 
-    def test_submit(self):
+    def test_edit_login_required(self):
         """
-        zzz
+        Checking of login required in edit page
         """
-        pass
+        # Goto edit not logged on
+        response = self.client.get(reverse('edit'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/?next=/edit/',
+                      response['Location'])
+        # Logging
+        c = Client()
+        c.login(username="admin", password="admin")
+        response = c.get(reverse('edit'))
+        self.assertEqual(response.status_code, 404)
+        # Is correct template used
+        self.assertTemplateUsed(response, 'hello/edit.html')
 
-    def test_indicate_loading_status(self):
+    def test_edit_post_method(self):
         """
-        zzz
+        Testing edit view - rendering posted data, saving data into db
         """
-        pass
+        # truncate db_table
+        Mycard.objects.all().delete()
 
-    def test_disabled_form_during_submit(self):
-        """
-        zzz
-        """
-        pass
-
-    def test_authorization_test(self):
-        """
-        zzz
-        """
-        pass
-
-    def test_photo_upload_and_sow(self):
-        """
-        zzz
-        """
-        pass
-
-    def test_photo_scaling(self):
-        """
-        zzz
-        """
-        pass
+        c = Client()
+        # filling dict
+        my_data_dict = dict()
+        my_data_dict['first_name'] = 'Yuriy4'
+        my_data_dict['last_name'] = 'Korostelyov4'
+        my_data_dict['birth_date'] = '1983-01-13'
+        my_data_dict['email'] = 'ykorostelyov4@gmail.com'
+        my_data_dict['jabber'] = 'ykorostelyov4@gmail.com'
+        my_data_dict['skype'] = 'yuriy.torhammer4'
+        my_data_dict['bio'] = "Some boio 4"
+        my_data_dict['other_contacts'] = "4"
+        # 0 records in mycard table
+        self.assertEqual(Mycard.objects.count(), 0)
+        c.login(username='admin', password='admin')
+        response = c.post('/edit/', my_data_dict, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Mycard.objects.count(), 2)
+        # Rendered content
+        self.assertContains(response, my_data_dict['first_name'])
+        self.assertContains(response, my_data_dict['last_name'])
+        self.assertContains(response, date(my_data_dict['birth_date']))
+        self.assertContains(response, my_data_dict['email'])
+        self.assertContains(response, my_data_dict['jabber'])
+        self.assertContains(response, my_data_dict['skype'])
+        self.assertContains(response, escape(my_data_dict['bio']))
+        self.assertContains(response, my_data_dict['other_contacts'])
+        # recorded data
+        mycard = Mycard.objects.first()
+        self.assertEqual(mycard.first_name, my_data_dict['first_name'])
+        self.assertEqual(mycard.last_name, my_data_dict['last_name'])
+        self.assertEqual(mycard.email, my_data_dict['email'])
+        self.assertEqual(mycard.jabber, my_data_dict['jabber'])
+        self.assertEqual(mycard.skype, my_data_dict['skype'])
+        self.assertEqual(mycard.bio, escape(my_data_dict['bio']))
+        self.assertEqual(mycard.other_contacts, my_data_dict['other_contacts'])

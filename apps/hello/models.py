@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 
 # mycard model
@@ -11,6 +12,28 @@ class Mycard(models.Model):
     skype = models.CharField(max_length=100)
     bio = models.TextField()
     other_contacts = models.TextField()
+    avatar = models.ImageField(upload_to='avatars',
+                               null=True,
+                               blank=True)
+
+    def save(self, force_insert=False,
+             force_update=False, update_fields=True, using=None):
+        print 'saving model'
+        super(Mycard, self).save()
+        if self.avatar:
+            filename = self.avatar.path
+            try:
+                image = Image.open(filename)
+                image.thumbnail((200, 200), Image.ANTIALIAS)
+                image.save(filename)
+
+            except IOError as err:
+                print err
+                self.avatar = None
+                super(Mycard, self).save()
+        else:
+            self.avatar = None
+            super(Mycard, self).save()
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name

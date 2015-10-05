@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}42 Coffee Cups{% endblock title %}
+
+{% block extra_head %}
+
+    {% load staticfiles %}
+    <script src="{% static 'js/edit.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="container">
+    <form id="edit-form" action = "{% url 'edit' %}" method="POST">
+
+        {% csrf_token %}
+        <fieldset>
+            <div class="col-md-6" style="width:300px">
+                <div class="form-data">
+                    <label for="first_name">{{ edit_form.first_name.label }} </label>
+                    {{ edit_form.first_name }}
+                </div>
+
+                <div class="form-data">
+                    <label for="last_name"> {{ edit_form.last_name.label }} </label>
+                    {{ edit_form.last_name }}
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-2">B.date </label>
+                    <div class="col-xs-1 date">
+                        <div class="input-group input-append date" id="datePicker">
+                            {{ edit_form.birth_date }}
+                            <span class="input-group-addon add-on">
+                                <span class="glyphicon glyphicon-calendar">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="form-data">
+                    <label for="avatar">{{ edit_form.avatar.label }} </label>
+                    <input id="fileUpload"name="avatar"type="file">
+                </div>
+
+                <div id="image-holder"> 
+                    <img id=thumb-image" src="{% if edit_form.instance.avatar %}{{ edit_form.instance.avatar.url }}{% endif %}" /> 
+                </div> 
+            </div>
+
+
+            <div class="col-md-6" class="form-vertical" align = "right"
+                 style="width:300px">
+
+                <div class="form-data">
+                    <label for="email"> {{ edit_form.email.label }}</label>
+                    {{ edit_form.email }}
+                </div>
+
+                <div class="form-data">
+                    <label for="jabber">{{ edit_form.jabber.label }} </label>
+                    {{ edit_form.jabber }}
+                </div>
+
+                <div class="form-data">
+                    <label for="skype"> {{ edit_form.skype.label }}</label>
+                    {{ edit_form.skype }}
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="form-group">
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for = "bio">{{ edit_form.bio.label }}</label>
+                    {{ edit_form.bio }}
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for = "other_contacts">{{ edit_form.other_contacts.label }} </label>
+                        {{ edit_form.other_contacts}}
+                </div>
+            </div>
+
+            <div class="alert alert-warning"id="warning">
+                To store changes you need to click<strong> Send </strong> button.
+            </div>
+
+            <div class="alert alert-info fade in"id="in_progress"style="display:none;">
+                Data sending in progress.
+            </div>
+
+            <div class="alert alert-success fade in" id="success" style="display:none;"> <strong> Congrats! </strong>
+                Changes successfully stored.
+            </div>
+
+            <div class="alert alert-danger fade in"id="fail" style="display:none;"><strong> Error!</strong>
+                Sending is failed.
+            </div>
+
+            <p id="sendwrapper">
+                <input type="submit"class="btn btn-primary"value="Send"id="sendbutton"/>
+                <a href="{% url 'home' %}">Cancel</a>
+            </p>
+
+        </fieldset>
+    </form>
+
+    <div class="to_request">
+        <hr>
+        <a href="{% url 'requests' %}"> Go to Requests
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

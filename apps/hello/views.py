@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, redirect
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from .models import RequestInfo
 from .models import Mycard
@@ -6,6 +6,8 @@ import logging
 import json
 from django.contrib.auth import authenticate, login
 from django.template import RequestContext
+from forms import MycardForm
+from django.contrib.auth.decorators import login_required
 
 
 log = logging.getLogger('apps')
@@ -24,19 +26,6 @@ def index(request):
     return render_to_response("hello/index.html", context)
 
 
-# index
-def edit(request):
-    # no data checking
-    try:
-        first_result = Mycard.objects.first()
-        log.debug(str(first_result.id) + ' ' + first_result.__unicode__())
-    except:
-        raise Http404
-
-    context = {'first_result': first_result}
-    return render_to_response("hello/edit.html", context)
-
-
 # requests
 def requests(request):
     return render(request, 'hello/requests.html')
@@ -44,7 +33,6 @@ def requests(request):
 
 # new requests  api
 def requests_queue(request):
-
     last_10_requests = RequestInfo.objects.order_by("-id").all()[:10]
 
     # making json array of last 10 records
@@ -75,6 +63,7 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+        print 'we are in login view'
         user = authenticate(username=username, password=password)
 
         if user:
@@ -84,9 +73,36 @@ def user_login(request):
             else:
                 return HttpResponse("Your account is disabled.")
         else:
-            print "Invalid login details: {0}, {1}".format(username,
-                                                           password)
-            return HttpResponse("Invalid login details supplied.")
-
+            return HttpResponse("You're not the one we were waiting for...")
     else:
         return render_to_response("hello/login.html", {}, context)
+
+
+@login_required()
+# edit
+def edit(request):
+    # no data checking
+    try:
+        edit_form = MycardForm(instance=Mycard.objects.first())
+    except:
+        raise Http404
+    print "Method = " + request.method
+    print "Is_ajax? = " + str(request.is_ajax())
+    if request.method == 'POST':
+        print request.FILES
+        edit_form = MycardForm(request.POST, request.FILES,
+                               instance=Mycard.objects.first())
+
+        if edit_form.is_valid():
+            edit_form.save()
+
+            if request.is_ajax():
+                return HttpResponse("OK")
+            else:
+                return redirect('/')
+
+        else:
+            return HttpResponse(str(edit_form))
+
+    context = {'edit_form': edit_form}
+    return render(request, "hello/edit.html", context)

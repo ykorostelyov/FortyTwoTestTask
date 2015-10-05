@@ -2,6 +2,7 @@ h1 a {
     color: #7b9ac4;
     font-family: Helvetica;
       font-size: 20pt;
+
 }
 
 body {
@@ -11,6 +12,7 @@ body {
  a {
     color: #7b9ac4;
     font-family: Helvetica;
+     font-size: 13pt;
 }
 
 .mydata_name {
@@ -53,6 +55,7 @@ body {
     color: #fffdfd;
     background: #abb4b4;
     font-family: Helvetica;
+    table-layout:initial;
     font-size: 12pt;
 }
 
@@ -81,4 +84,18 @@ body {
     background: #c5dbf2;
     font-family: Helvetica;
     font-size: 11pt;
+}
+
+.control-label {
+    color: #454a4a;
+    font-family: Helvetica;
+    font-size: 11pt;
+}
+
+.thumb-image {
+    float:left;
+    width:300px;
+    height: 300px;
+    position:relative;
+    padding:5px;
 }
