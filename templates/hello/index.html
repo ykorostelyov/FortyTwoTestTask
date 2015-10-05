@@ -5,30 +5,19 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock extra_head %}
 {% block content %}
-
     <div id="container">
         <div class = "mydata_name">
             <div class = "inner_cell">Name: </div>
             <div class = "inner_cell">Last Name: </div>
             <div class = "inner_cell">Date of birth: </div>
-            <br>
-            <div class = "inner_cell">Photo: </div>
-            <div id="image-holder"> 
-                <p>
-                    {% if first_result.avatar %}
-                        <img src="{{ MEDIA_URL }}{{ first_result.avatar.url }}"
-                             alt="Photo" />
-                    {% else %}
-                        <img class='image' src="/static/img/default.jpg" alt="Photo" />
-                    {% endif %}
-                </p>
-            </div> 
+            <div class = "inner_cell">Bio: </div>
         </div>
 
         <div class = "mydata_value">
             <div class = "inner_cell">{{ first_result.first_name }}</div>
             <div class = "inner_cell">{{ first_result.last_name }}</div>
             <div class = "inner_cell">{{ first_result.birth_date }}</div>
+            <div class = "inner_cell">{{ first_result.bio|linebreaks }}</div>
         </div>
 
         <div class = "mydata_empty"><br> </div>
@@ -38,11 +27,6 @@
             <div class = "inner_cell">Email: </div>
             <div class = "inner_cell">Jabber: </div>
             <div class = "inner_cell">Skype: </div>
-            <br>
-            <div class = "inner_cell">Bio: </div>
-            <br>
-            <br>
-            <br>
             <div class = "inner_cell">Other contacts: </div>
         </div>
 
@@ -51,14 +35,9 @@
             <div class = "inner_cell">{{ first_result.email }}</div>
             <div class = "inner_cell">{{ first_result.jabber }}</div>
             <div class = "inner_cell">{{ first_result.skype }}</div>
-            <br>
-            <div class = "inner_cell">{{ first_result.bio|linebreaks }}</div>
-            <br>
-            <br>
-            <br>
             <div class = "inner_cell">{{ first_result.other_contacts|linebreaks }}</div>
         </div>
-
+     
         <div class = "mydata_empty">
             <a href="{% url 'login' %}">Login</a>
         </div>
@@ -74,7 +53,6 @@
     <br>
     <br>
     <br>
-
     <div class="to_request">
         <br>
         <br>
