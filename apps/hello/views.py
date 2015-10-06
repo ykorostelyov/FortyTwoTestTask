@@ -21,8 +21,11 @@ def index(request):
         log.debug(str(first_result.id) + ' ' + first_result.__unicode__())
     except:
         raise Http404
-
-    context = {'first_result': first_result}
+    if request.user.is_authenticated():
+        is_auth = True
+    else:
+        is_auth = False
+    context = {'first_result': first_result, 'is_auth': is_auth}
     return render_to_response("hello/index.html", context)
 
 
@@ -89,10 +92,8 @@ def edit(request):
     print "Method = " + request.method
     print "Is_ajax? = " + str(request.is_ajax())
     if request.method == 'POST':
-        print request.FILES
         edit_form = MycardForm(request.POST, request.FILES,
                                instance=Mycard.objects.first())
-
         if edit_form.is_valid():
             edit_form.save()
 
@@ -103,6 +104,6 @@ def edit(request):
 
         else:
             return HttpResponse(str(edit_form))
-
+    print edit_form
     context = {'edit_form': edit_form}
     return render(request, "hello/edit.html", context)
