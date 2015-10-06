@@ -92,6 +92,7 @@ def edit(request):
     print "Method = " + request.method
     print "Is_ajax? = " + str(request.is_ajax())
     if request.method == 'POST':
+        print request
         edit_form = MycardForm(request.POST, request.FILES,
                                instance=Mycard.objects.first())
         if edit_form.is_valid():
