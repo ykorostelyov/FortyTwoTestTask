@@ -60,7 +60,9 @@
         </div>
 
         <div class = "mydata_empty">
-            <a href="{% url 'login' %}">Login</a>
+            {% if is_auth %}<a href="{% url 'edit' %}">Edit</a>{% endif %}
+            {% if not is_auth %}<a href="{% url 'login' %}">Login</a>{%endif %}
+
         </div>
 
         <div class = "right_menu">
