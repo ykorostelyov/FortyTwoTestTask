@@ -18,7 +18,6 @@ class Mycard(models.Model):
 
     def save(self, force_insert=False,
              force_update=False, update_fields=True, using=None):
-        print 'saving model'
         super(Mycard, self).save()
         if self.avatar:
             filename = self.avatar.path
@@ -40,7 +39,7 @@ class Mycard(models.Model):
 
 
 # Request model
-class RequestInfo (models.Model):
+class RequestInfo(models.Model):
     date = models.DateTimeField(auto_now=True)
     host = models.CharField(max_length=1024)
     method = models.CharField(max_length=30)

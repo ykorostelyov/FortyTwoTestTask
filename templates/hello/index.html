@@ -59,13 +59,22 @@
             <div class = "inner_cell">{{ first_result.other_contacts|linebreaks }}</div>
         </div>
 
-        <div class = "mydata_empty">
-            <a href="{% url 'login' %}">Login</a>
+        <div>
+            {% if is_auth %}
+                <a href="{% url 'edit' %}">Edit</a> 
+                |
+                <a href="/admin/auth/user/{{user_id}}/">
+                    <strong>{{curr_user}}</strong>
+                </a>
+                |
+                <a align="right" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+
+            {% if not is_auth %}
+                <a href="{% url 'login' %}">Login</a>
+            {%endif %}
         </div>
 
-        <div class = "right_menu">
-            <a href="admin">Admin page</a>
-        </div>
     </div>
     <br>
     <br>

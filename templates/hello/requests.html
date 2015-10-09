@@ -8,6 +8,7 @@
 
 {% block title %}No New Requests{% endblock title %}
 {% block content %}
+
     <div id="container" class="col-sm-9">
         <table class="table table-bordered table-hover table-striped col-sm-7"
                id="webrequest_block" >  <thead>
@@ -18,33 +19,13 @@
                 <th class="request_header"> Status code </th>
                 <th class="request_header"> Remote address </th>
             </tr>
-            </thead>
+        </thead>
             <tbody>
             </tbody>
-            </table>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <hr>
-    <a href="{% url 'home' %}">To main page</a>
+        </table>
+
+        <div class="col-md-12" style="clear:left;">
+            <hr>
+            <a href="{% url 'home' %}">To main page</a>
+        </div>
 {% endblock content %}

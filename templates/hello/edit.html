@@ -12,37 +12,40 @@
 
 {% block content %}
 
-<div class="container">
+
     <form id="edit-form" action = "{% url 'edit' %}" method="POST">
 
         {% csrf_token %}
         <fieldset>
-            <div class="col-md-6" style="width:300px">
-                <div class="form-data">
+            <div class="col-md-3 form-vertical">
+                <div class="form-group">
                     <label for="first_name">{{ edit_form.first_name.label }} </label>
-                    {{ edit_form.first_name }}
-                </div>
-
-                <div class="form-data">
-                    <label for="last_name"> {{ edit_form.last_name.label }} </label>
-                    {{ edit_form.last_name }}
+                    <input class="form-control" name="first_name"type="text" id = "id_first_name"
+                           value = "{{ edit_form.first_name.value }}"/>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-xs-2">B.date </label>
-                    <div class="col-xs-1 date">
-                        <div class="input-group input-append date" id="datePicker">
-                            {{ edit_form.birth_date }}
-                            <span class="input-group-addon add-on">
-                                <span class="glyphicon glyphicon-calendar">
-                                </span>
-                            </span>
-                        </div>
-                    </div>
+                    <label for="first_name">{{ edit_form.last_name.label }}
+                    </label>
+                    <input class="form-control" name="last_name"type="text" id = "id_last_name"
+                           value = "{{ edit_form.last_name.value }}"/>
                 </div>
 
-                <br>
-                <br>
+                <div class="form-group">
+                    <label for="birth_date">{{ edit_form.birth_date.label }}
+                    </label>
+                    <div class="input-group input-append date"
+                         id="datePicker">
+                    <input class="form-control"
+                            name="birth_date"type="text" id = "id_birth_date"
+                           format ="'%Y-%m-%d'"
+                         value = "{{edit_form.birth_date.value.year}}-{{edit_form.birth_date.value.month|stringformat:"02d"}}-{{edit_form.birth_date.value.day|stringformat:"02d"}}"/>
+                        <span class="input-group-addon add-on">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                </div>
 
                 <div class="form-data">
                     <label for="avatar">{{ edit_form.avatar.label }} </label>
@@ -53,75 +56,65 @@
                     <img id=thumb-image" src="{% if edit_form.instance.avatar %}{{ edit_form.instance.avatar.url }}{% endif %}" /> 
                 </div> 
             </div>
-
-
-            <div class="col-md-6" class="form-vertical" align = "right"
-                 style="width:300px">
-
-                <div class="form-data">
-                    <label for="email"> {{ edit_form.email.label }}</label>
-                    {{ edit_form.email }}
-                </div>
-
-                <div class="form-data">
-                    <label for="jabber">{{ edit_form.jabber.label }} </label>
-                    {{ edit_form.jabber }}
-                </div>
-
-                <div class="form-data">
-                    <label for="skype"> {{ edit_form.skype.label }}</label>
-                    {{ edit_form.skype }}
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <div class="form-group">
-
+            <div class="col-md-1"><br></div>
+            <div class="col-md-3" >
                 <div class="form-group">
-                    <label class="col-sm-1 control-label" for = "bio">{{ edit_form.bio.label }}</label>
-                    {{ edit_form.bio }}
+                    <label for="email">{{ edit_form.email.label }}
+                    </label>
+                    <input class="form-control" name="email"type="text" id = "id_email"
+                           value = "{{ edit_form.email.value }}"/>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-sm-1 control-label" for = "other_contacts">{{ edit_form.other_contacts.label }} </label>
-                        {{ edit_form.other_contacts}}
+                    <label for="jabber">{{ edit_form.jabber.label }}
+                    </label>
+                    <input class="form-control" name="jabber"type="text" id = "id_jabber"
+                           value = "{{ edit_form.jabber.value }}"/>
+                </div>
+                 <div class="form-group">
+                    <label for="skype">{{ edit_form.skype.label }}
+                    </label>
+                    <input class="form-control" name="skype"type="text" id = "id_skype"
+                           value = "{{ edit_form.skype.value }}"/>
+                </div>
+                <div class="form-group">
+                    <label for="bio">{{ edit_form.bio.label }}
+                    </label>
+                    <textarea class="form-control" rows="4"
+                              name="bio"type="text" id = "id_bio">{{ edit_form.bio.value }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="other_contacts">{{ edit_form.other_contacts.label }}
+                    </label>
+                    <textarea class="form-control" rows="4" cols="1"
+                              name="other_contacts"type="text" id = "id_other_contacts">{{ edit_form.other_contacts.value }}</textarea>
                 </div>
             </div>
-
-            <div class="alert alert-warning"id="warning">
-                To store changes you need to click<strong> Send </strong> button.
+            <div class="col-md-7" style="clear:left;">
+                <br>
+                <div class="alert alert-warning"id="warning">
+                    To store changes you need to click<strong> Send
+                </strong> button.
+                </div>
+                <div class="alert alert-info fade in"id="in_progress"style="display:none;">
+                    Data sending in progress.
+                </div>
+                <div class="alert alert-success fade in" id="success" style="display:none;"> <strong> Congrats! </strong>
+                    Changes successfully stored.
+                </div>
+                <div class="alert alert-danger fade in"id="fail" style="display:none;"><strong> Error!</strong>
+                    Sending is failed.
+                </div>
+                <br>
+                <p id="sendwrapper">
+                    <input type="submit"class="btn btn-primary"value="Send"id="sendbutton"/>
+                    <a href="{% url 'home' %}">Cancel</a>
+                </p>
+                <div class="to_request">
+                    <hr>
+                    <a href="{% url 'requests' %}"> Go to Requests
+                    </a>
+                </div>
             </div>
-
-            <div class="alert alert-info fade in"id="in_progress"style="display:none;">
-                Data sending in progress.
-            </div>
-
-            <div class="alert alert-success fade in" id="success" style="display:none;"> <strong> Congrats! </strong>
-                Changes successfully stored.
-            </div>
-
-            <div class="alert alert-danger fade in"id="fail" style="display:none;"><strong> Error!</strong>
-                Sending is failed.
-            </div>
-
-            <p id="sendwrapper">
-                <input type="submit"class="btn btn-primary"value="Send"id="sendbutton"/>
-                <a href="{% url 'home' %}">Cancel</a>
-            </p>
-
         </fieldset>
     </form>
-
-    <div class="to_request">
-        <hr>
-        <a href="{% url 'requests' %}"> Go to Requests
-        </a>
-    </div>
-</div>
-
 {% endblock content %}

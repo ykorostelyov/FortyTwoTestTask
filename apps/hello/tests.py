@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.common.exceptions import TimeoutException
 from django.test import Client
 from django.template.defaultfilters import escape, date
+from django.contrib.admin.models import LogEntry
 
 
 class TestMycardModel(TestCase):
@@ -240,3 +241,50 @@ class TestEditForm(TestCase):
         self.assertEqual(mycard.skype, my_data_dict['skype'])
         self.assertEqual(mycard.bio, escape(my_data_dict['bio']))
         self.assertEqual(mycard.other_contacts, my_data_dict['other_contacts'])
+
+
+class TestSignals(TestCase):
+    fixtures = ['initial_data.json']
+
+    def test_settings_link_for_current_user(self):
+        """
+        testing of correctly generating settings link for current user
+        """
+        # Logging
+        c = Client()
+        c.login(username="admin", password="admin")
+        response = c.get(reverse('home'))
+        self.assertContains(response, '/admin/auth/user/1/')
+
+        c.logout()
+        c.login(username="user", password="user")
+        response = c.get(reverse('home'))
+        self.assertContains(response, '/admin/auth/user/2/')
+
+    def test_signals(self):
+        """
+        testing of signals for existing models (on create, on change,
+        on delete)
+        """
+
+        # creating
+        LogEntry.objects.all().delete()
+        c = Client()
+        c.get(reverse('home'))
+        log_entry_count = LogEntry.objects.filter(
+            change_message="created object").count()
+
+        self.assertEqual(log_entry_count, 2)
+        # changing
+        LogEntry.objects.all().delete()
+        for card in Mycard.objects.filter(
+                jabber="ykorostelyov@khavr.com").all():
+            card.save()
+        log_entry_count = LogEntry.objects.count()
+        self.assertEqual(log_entry_count, 3)
+        # deleting
+        LogEntry.objects.all().delete()
+        Mycard.objects.all().delete()
+        log_entry_count = LogEntry.objects.filter(
+            change_message="deleting object").count()
+        self.assertEqual(log_entry_count, 12)

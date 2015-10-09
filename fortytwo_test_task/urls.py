@@ -12,6 +12,8 @@ urlpatterns = patterns(
         name='requests_api'),
     url(r'^admin/', include(admin.site.urls), name='admin'),
     url(r'^accounts/login/$', 'hello.views.user_login', name='login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout',
+        kwargs={'next_page': '/'}),
     url(r'^edit/$', 'hello.views.edit', name='edit'),
     url(r'^uploads/$', 'hello.views.edit', name='uploads'),
 )

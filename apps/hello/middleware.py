@@ -12,7 +12,9 @@ def dumps(value):
 class GetRequest(object):
     def process_response(self, request, response):
         try:
-            self.save(request, response)
+            if response['Content-Type'] != 'application/json':
+                self.save(request, response)
+
         except Exception as error:
             # error logging
             print >> sys.stderr, "Error saving request log", error
