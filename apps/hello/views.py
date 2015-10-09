@@ -8,7 +8,8 @@ from django.contrib.auth import authenticate, login
 from django.template import RequestContext
 from forms import MycardForm
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.admin.models import LogEntry # flake8: noqa
+import signals # flake8: noqa
 
 log = logging.getLogger('apps')
 
@@ -21,11 +22,18 @@ def index(request):
         log.debug(str(first_result.id) + ' ' + first_result.__unicode__())
     except:
         raise Http404
+
     if request.user.is_authenticated():
+        current_user_id = request.user.id
         is_auth = True
     else:
         is_auth = False
-    context = {'first_result': first_result, 'is_auth': is_auth}
+        current_user_id = 0
+
+    context = {'first_result': first_result,
+               'is_auth': is_auth,
+               'curr_user': request.user,
+               'user_id': current_user_id}
     return render_to_response("hello/index.html", context)
 
 
@@ -66,7 +74,7 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        print 'we are in login view'
+
         user = authenticate(username=username, password=password)
 
         if user:
@@ -89,10 +97,7 @@ def edit(request):
         edit_form = MycardForm(instance=Mycard.objects.first())
     except:
         raise Http404
-    print "Method = " + request.method
-    print "Is_ajax? = " + str(request.is_ajax())
     if request.method == 'POST':
-        print request
         edit_form = MycardForm(request.POST, request.FILES,
                                instance=Mycard.objects.first())
         if edit_form.is_valid():
@@ -102,9 +107,8 @@ def edit(request):
                 return HttpResponse("OK")
             else:
                 return redirect('/')
-
         else:
             return HttpResponse(str(edit_form))
-    print edit_form
+
     context = {'edit_form': edit_form}
     return render(request, "hello/edit.html", context)
