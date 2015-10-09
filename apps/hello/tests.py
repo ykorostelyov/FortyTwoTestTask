@@ -274,17 +274,17 @@ class TestSignals(TestCase):
         log_entry_count = LogEntry.objects.filter(
             change_message="created object").count()
 
-        self.assertEqual(log_entry_count, 2)
+        self.assertEqual(log_entry_count, 1)
         # changing
         LogEntry.objects.all().delete()
         for card in Mycard.objects.filter(
                 jabber="ykorostelyov@khavr.com").all():
             card.save()
         log_entry_count = LogEntry.objects.count()
-        self.assertEqual(log_entry_count, 3)
+        self.assertEqual(log_entry_count, 2)
         # deleting
         LogEntry.objects.all().delete()
         Mycard.objects.all().delete()
         log_entry_count = LogEntry.objects.filter(
             change_message="deleting object").count()
-        self.assertEqual(log_entry_count, 12)
+        self.assertEqual(log_entry_count, 1)
