@@ -44,6 +44,7 @@ def requests(request):
 
 # new requests  api
 def requests_queue(request):
+
     last_10_requests = RequestInfo.objects.order_by("-id").all()[:10]
 
     # making json array of last 10 records

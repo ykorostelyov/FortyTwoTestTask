@@ -9,8 +9,8 @@
 {% block title %}No New Requests{% endblock title %}
 {% block content %}
 
-    <div id="container" class="col-sm-9">
-        <table class="table table-bordered table-hover table-striped col-sm-7"
+        <div id="container" class="col-md-9">
+        <table class="table table-hover table-striped col-sm-5"
                id="webrequest_block" >  <thead>
             <tr>
                 <th class="request_header"> ID </th>
@@ -23,8 +23,37 @@
             <tbody>
             </tbody>
         </table>
+    </div>
 
-        <div class="col-md-12" style="clear:left;">
+    {% csrf_token %}
+    <div  class="col-md-12 form-vertical" style="clear:left;">
+        <div class="col-md-3">
+            <label for="sel1">Priority num for standard selection</label>
+              <select class="form-control" id="sel1"
+                      name = "priority_selector">
+                  <option>0</option>
+                  <option>1</option>
+              </select>
+        </div>
+
+        <div class="col-md-2">
+              <label for="priority">Priority</label>
+              <input type="text" class="form-control" id="Priority"
+                     name="priority"
+                     value= "1">
+        </div>
+
+        <br><br><br><br>
+
+        <div class="col-md-3">
+            <input type="submit" class="btn btn-success" value="Update"
+                   id="update">
+        </div>
+
+    </div>
+
+
+        <div class="col-md-9" style="clear:left;">
             <hr>
             <a href="{% url 'home' %}">To main page</a>
         </div>
