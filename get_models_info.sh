@@ -1,2 +1,2 @@
 #!/bin/sh
-python manage.py get_models_info grep da >> stderr/$(date +%Y-%m-%d).dat
+python manage.py get_models_info 2>> stderr/$(date +%Y-%m-%d).dat
