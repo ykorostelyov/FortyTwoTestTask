@@ -9,8 +9,20 @@ function add_req (){
             url: url,
             type: "GET",
             success: function(json) {
-                new_requests_cnt = json['new_requests_cnt'];
-                console.log("JS new_requests_cnt = " + new_requests_cnt);
+
+                priority_selector = $('#sel1 option:selected').val();
+
+                if (priority_selector == 0){
+                //get
+                  requests_array =   json['last_10_get_requests'];
+                  new_requests_cnt = json['new_get_requests_cnt'];
+
+                }else{
+
+                //post
+                  requests_array =   json['last_10_post_requests'];
+                  new_requests_cnt = json['new_post_requests_cnt'];
+                }
 
                 if (new_requests_cnt > 0){
                     document.title = '(' + new_requests_cnt +') New requests';
@@ -18,49 +30,20 @@ function add_req (){
                     document.title = 'No new requests';
                 }
 
-                requests_array = json['last_10_requests'];
+                for (var i = 9; i >= 0; i--) {
+                    var request_record = $('<tr class ="request_unreaded"></tr>');
+                    request_record.append('<td>' + requests_array[i]['id'] + '</td>');
+                    request_record.append('<td>' + requests_array[i]['priority'] + '</td>');
+                    request_record.append('<td>' + requests_array[i]['method'] + '</td>');
+                    request_record.append('<td>' + requests_array[i]['uri'] + '</td>');
+                    request_record.append('<td>' + requests_array[i]['status_code'] + '</td>');
+                    request_record.append('<td>' + requests_array[i]['remote_addr'] + '</td>');
+                    $('#webrequest_block').prepend(request_record);
 
-                priority = $('input[name="priority"]').val()
-                console.log("priority= "+$('input[name="priority"]').val());
-
-                priority_selector = $('#sel1 option:selected').val();
-                console.log("selector= "+$('#sel1 option:selected').val());
-
-                if (priority == priority_selector) {
-                    for (var i = requests_array.length - 1; i >= 0; i--) {
-                        var request_record = $('<tr class ="request_unreaded"></tr>');
-                        request_record.append('<td>' + requests_array[i]['id'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['method'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['uri'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['status_code'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['remote_addr'] + '</td>');
-                        $('#webrequest_block').prepend(request_record);
-
-                        if ($('tbody tr').length > 10) {
-                            $('tbody tr:last').remove();
-                        }
+                    if ($('tbody tr').length > 10) {
+                        $('tbody tr:last').remove();
                     }
-                } else {
-                    $('tbody tr').remove();
-                    for (var i = 0; i<= requests_array.length - 1; i++) {
-                        var request_record = $('<tr class ="request_unreaded"></tr>');
-
-                        request_record.append('<td>' + requests_array[i]['id'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['method'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['uri'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['status_code'] + '</td>');
-                        request_record.append('<td>' + requests_array[i]['remote_addr'] + '</td>');
-                        $('#webrequest_block').prepend(request_record);
-
-                        if ($('tbody tr').length > 10) {
-                            $('tbody tr:first').remove();
-                        }
-
-                    }
-
                 }
-
-
             },
             error: function(xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText);
@@ -78,5 +61,5 @@ $(document).ready(function(){
       add_req();
   });
 
-    setInterval('add_req()',1000);
+    setInterval('add_req()',100000);
 });

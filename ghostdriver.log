@@ -1,9 +1,25 @@
 PhantomJS is launching GhostDriver...
-[INFO  - 2015-09-20T10:05:19.272Z] GhostDriver - Main - running on port 60216
-[INFO  - 2015-09-20T10:05:19.828Z] Session [19841500-5f7f-11e5-80db-938babfc2faa] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
-[INFO  - 2015-09-20T10:05:19.828Z] Session [19841500-5f7f-11e5-80db-938babfc2faa] - page.customHeaders:  - {}
-[INFO  - 2015-09-20T10:05:19.828Z] Session [19841500-5f7f-11e5-80db-938babfc2faa] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"mac-unknown-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2015-09-20T10:05:19.828Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 19841500-5f7f-11e5-80db-938babfc2faa
-[ERROR - 2015-09-20T10:05:19.959Z] Session [19841500-5f7f-11e5-80db-938babfc2faa] - page.onError - msg: ReferenceError: Can't find variable: $
-[ERROR - 2015-09-20T10:05:19.960Z] Session [19841500-5f7f-11e5-80db-938babfc2faa] - page.onError - stack:
-  (anonymous function) (http://localhost:8081/static/js/requests.js:43)
+[INFO  - 2015-10-13T12:44:10.976Z] GhostDriver - Main - running on port 51720
+[INFO  - 2015-10-13T12:44:11.953Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
+[INFO  - 2015-10-13T12:44:11.953Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.customHeaders:  - {}
+[INFO  - 2015-10-13T12:44:11.953Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"mac-unknown-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2015-10-13T12:44:11.953Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 1a9b06c0-71a8-11e5-89c5-1f862ea990fb
+[ERROR - 2015-10-13T12:44:12.123Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - msg: TypeError: 'undefined' is not a function (evaluating 'e("<input type='file'/>")')
+[ERROR - 2015-10-13T12:44:12.124Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - stack:
+  (anonymous function) (http://malsup.github.io/min/jquery.form.min.js:11)
+  (anonymous function) (http://malsup.github.io/min/jquery.form.min.js:11)
+  (anonymous function) (http://malsup.github.io/min/jquery.form.min.js:11)
+[ERROR - 2015-10-13T12:44:12.229Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - msg: ReferenceError: Can't find variable: jQuery
+[ERROR - 2015-10-13T12:44:12.229Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - stack:
+  (anonymous function) (http://code.jquery.com/ui/1.11.4/jquery-ui.js:14)
+  (anonymous function) (http://code.jquery.com/ui/1.11.4/jquery-ui.js:16617)
+[ERROR - 2015-10-13T12:44:12.542Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - msg: Error: Bootstrap's JavaScript requires jQuery
+[ERROR - 2015-10-13T12:44:12.543Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - stack:
+  (anonymous function) (https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js:6)
+[ERROR - 2015-10-13T12:44:12.546Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - msg: TypeError: 'undefined' is not a function (evaluating 't(window)')
+[ERROR - 2015-10-13T12:44:12.546Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - stack:
+  (anonymous function) (http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js:1)
+  (anonymous function) (http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js:1)
+[ERROR - 2015-10-13T12:44:12.548Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - msg: ReferenceError: Can't find variable: $
+[ERROR - 2015-10-13T12:44:12.548Z] Session [1a9b06c0-71a8-11e5-89c5-1f862ea990fb] - page.onError - stack:
+  (anonymous function) (http://localhost:8081/static/js/requests.js:54)
