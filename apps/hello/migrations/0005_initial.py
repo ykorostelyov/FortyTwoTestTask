@@ -8,15 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Mycard.avatar'
-        db.add_column(u'hello_mycard', 'avatar',
-                      self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True),
+        # Adding field 'RequestInfo.priority'
+        db.add_column(u'hello_requestinfo', 'priority',
+                      self.gf('django.db.models.fields.CharField')(default=0, max_length=2),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting field 'Mycard.avatar'
-        db.delete_column(u'hello_mycard', 'avatar')
+        # Deleting field 'RequestInfo.priority'
+        db.delete_column(u'hello_requestinfo', 'priority')
 
 
     models = {
@@ -42,6 +42,7 @@ class Migration(SchemaMigration):
             'is_viewed': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'method': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
             'path': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
+            'priority': ('django.db.models.fields.CharField', [], {'default': '0', 'max_length': '2'}),
             'remote_addr': ('django.db.models.fields.GenericIPAddressField', [], {'max_length': '39'}),
             'status_code': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
             'uri': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),

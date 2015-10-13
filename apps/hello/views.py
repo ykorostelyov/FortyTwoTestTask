@@ -45,27 +45,54 @@ def requests(request):
 # new requests  api
 def requests_queue(request):
 
-    last_10_requests = RequestInfo.objects.order_by("-id").all()[:10]
+    last_10_post_requests = RequestInfo.objects.filter(
+        method="POST").order_by(
+        "-id").all()[:10]
+    last_10_get_requests = RequestInfo.objects.filter(
+        method="GET").order_by(
+        "-id").all()[:10]
 
     # making json array of last 10 records
-    requests_array = []
-    for curr_request in last_10_requests:
-        requests_array.append({
+    post_requests_array = []
+    for curr_request in last_10_post_requests:
+        post_requests_array.append({
             'id': curr_request.id,
+            'priority': curr_request.priority,
             'method': curr_request.method,
             'uri': curr_request.uri,
             'status_code': curr_request.status_code,
-            'remote_addr': curr_request.remote_addr,
+            'remote_addr': curr_request.remote_addr
         })
-    new_requests = RequestInfo.objects.filter(is_viewed=False)
 
+    # making json array of last 10 records
+    get_requests_array = []
+    for curr_request in last_10_get_requests:
+        get_requests_array.append({
+            'id': curr_request.id,
+            'priority': curr_request.priority,
+            'method': curr_request.method,
+            'uri': curr_request.uri,
+            'status_code': curr_request.status_code,
+            'remote_addr': curr_request.remote_addr
+        })
+    new_post_requests = RequestInfo.objects.filter(is_viewed=False,
+                                                   method="POST")
+    new_get_requests = RequestInfo.objects.filter(is_viewed=False,
+                                                  method="GET")
     # marking records as read
-    for curr_request in new_requests:
+    for curr_request in new_post_requests:
         curr_request.is_viewed = True
         curr_request.save()
 
-    context = {'last_10_requests': requests_array,
-               'new_requests_cnt': len(new_requests)}
+    # marking records as read
+    for curr_request in new_get_requests:
+        curr_request.is_viewed = True
+        curr_request.save()
+
+    context = {'last_10_post_requests': post_requests_array,
+               'new_post_requests_cnt': len(new_post_requests),
+               'last_10_get_requests': get_requests_array,
+               'new_get_requests_cnt': len(new_get_requests)}
     return HttpResponse(json.dumps(context),
                         content_type="application/json")
 

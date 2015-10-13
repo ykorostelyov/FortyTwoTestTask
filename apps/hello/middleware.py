@@ -34,5 +34,6 @@ class GetRequest(object):
                 status_code=response.status_code,
                 remote_addr=meta.pop('REMOTE_ADDR', None),
                 is_viewed=False,
-                is_ajax=True
+                is_ajax=True,
+                priority=0 if request.method == "GET" else 1
             ).save()
