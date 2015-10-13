@@ -266,7 +266,6 @@ class TestSignals(TestCase):
         testing of signals for existing models (on create, on change,
         on delete)
         """
-
         # creating
         LogEntry.objects.all().delete()
         c = Client()
