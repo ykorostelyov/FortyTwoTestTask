@@ -63,4 +63,4 @@ def model_delete(sender, **kwargs):
             action_flag=action,
             change_message='deleting object')
     except:
-        print "err del signal: " + str(sender)
+        print "error in  signal post_delete: " + str(sender)

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+from django.contrib.auth.views import login, logout
 from django.contrib import admin
 from django.conf import settings
 admin.autodiscover()
@@ -11,11 +11,11 @@ urlpatterns = patterns(
     url(r'^requests_api/', 'hello.views.requests_queue',
         name='requests_api'),
     url(r'^admin/', include(admin.site.urls), name='admin'),
-    url(r'^accounts/login/$', 'hello.views.user_login', name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout',
-        kwargs={'next_page': '/'}),
+    (r'^accounts/login/$',  login),
+    url(r'^logout/$', logout, name='logout', kwargs={'next_page': '/'}),
     url(r'^edit/$', 'hello.views.edit', name='edit'),
     url(r'^uploads/$', 'hello.views.edit', name='uploads'),
+    url(r'^accounts/profile/$', 'hello.views.index', name='home'),
 )
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)

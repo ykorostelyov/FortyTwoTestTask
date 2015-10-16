@@ -17,7 +17,7 @@ from django.contrib.admin.models import LogEntry
 
 class TestMycardModel(TestCase):
 
-    def _test__is_init_data_correct(self):
+    def test__is_init_data_correct(self):
         """
         Testing of init data accuracy
         """
@@ -39,7 +39,7 @@ class TestMycardModel(TestCase):
         self.assertNotEqual(len(mycard.other_contacts), 0)
         self.assertNotEqual(mycard.birth_date, datetime.date.today())
 
-    def _test_view__unicode_characters(self):
+    def test_view__unicode_characters(self):
         """
         Displaying of Unicode characters
         """
@@ -49,7 +49,7 @@ class TestMycardModel(TestCase):
         self.assertContains(response, u'Биография')
         self.assertContains(response, u'Другие')
 
-    def _test_view__raising_404_when_no_data(self):
+    def test_view__raising_404_when_no_data(self):
         """
         raising 404 when no_data for view
         """
@@ -57,7 +57,7 @@ class TestMycardModel(TestCase):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 404)
 
-    def _test_view__only_one_record_from_db(self):
+    def test_view__only_one_record_from_db(self):
         """
         Only one record from db showing in view
         """
@@ -75,7 +75,7 @@ class TestMycardModel(TestCase):
         response = self.client.get(reverse('home'))
         self.assertNotEqual(response, u'Имя2')
 
-    def _test_view__using_rendering_data_from_db(self):
+    def test_view__using_rendering_data_from_db(self):
         """
         Using of rendering data, not static
         """
@@ -114,53 +114,39 @@ class SelTest(LiveServerTestCase):
 
 class TestLiveRequests(SelTest):
 
-    def _test_only_10_requests(self):
+    def test_only_10_requests_and_title_count(self):
         """
         Show last 10 http requests that are stored by middleware
         """
         RequestInfo.objects.all().delete()
         # calling home 12 times
-        for i in range(12):
+        for i in range(11):
             self.client.get(reverse('home'))
 
         # more than 10 requests in db
         self.assertTrue(RequestInfo.objects.all().count() > 10)
 
-        driver = webdriver.PhantomJS()
+        driver = webdriver.Firefox()
         driver.get('%s%s' % (self.live_server_url, '/requests/'))
-        # only 10 requests rendered
-        self.assertEqual(len(driver.find_elements_by_class_name(
-            'request_unreaded')), 10)
 
         try:
-            WebDriverWait(self.selenium, 10)\
+            WebDriverWait(self.selenium, 5)\
                 .until(expected_conditions
                        .presence_of_element_located((By.TAG_NAME,
                                                     "td")))
         except TimeoutException:
             pass
 
-        driver.quit()
+        # 12 /home/ requests and 1 /requests/
+        self.assertEquals('(13) New requests', driver.title)
 
-    def _test_title_count(self):
-        """
-        If there are N new requests, page title should start with (N)
-        """
-        RequestInfo.objects.all().delete()
-        # Must have 3 new requests
-        for i in range(2):
-            self.client.get(reverse('requests'))
-        driver = webdriver.PhantomJS()
-        driver.get('%s%s' % (self.live_server_url, '/requests/'))
-        self.assertEquals('(3) New requests', driver.title)
-        # Must have 1 new requests
-        RequestInfo.objects.all().delete()
-        driver.get('%s%s' % (self.live_server_url, '/requests/'))
-        self.assertEquals('(1) New requests', driver.title)
+        # only 10 requests rendered
+        self.assertEqual(len(driver.find_elements_by_class_name(
+            'request_unreaded')), 10)
 
         driver.quit()
 
-    def _test_render(self):
+    def test_render(self):
         """
         Checking of rendered data
         """
@@ -266,6 +252,7 @@ class TestSignals(TestCase):
         testing of signals for existing models (on create, on change,
         on delete)
         """
+
         # creating
         LogEntry.objects.all().delete()
         c = Client()
@@ -287,3 +274,41 @@ class TestSignals(TestCase):
         log_entry_count = LogEntry.objects.filter(
             change_message="deleting object").count()
         self.assertEqual(log_entry_count, 1)
+
+
+class TestPriority(SelTest):
+
+    def test_get_post_priority(self):
+        """
+        Testing of priority types showing
+        """
+
+        for i in range(11):
+            self.client.get(reverse('home'))
+
+        driver = webdriver.Firefox()
+        driver.get('%s%s' % (self.live_server_url, '/requests/'))
+
+        try:
+            WebDriverWait(self.selenium, 5)\
+                .until(expected_conditions
+                       .presence_of_element_located((By.TAG_NAME,
+                                                    "td")))
+        except TimeoutException:
+            pass
+
+        element = driver.\
+            find_element_by_xpath("//select[@name='priority_selector']")
+        all_options = element.find_elements_by_tag_name("option")
+
+        for option in all_options:
+            print option
+            print("Value is: %s" % option.get_attribute("value"))
+            option.click()
+            driver.find_element_by_id("update").click()
+            driver.implicitly_wait(1)
+
+            print driver\
+                .find_elements_by_class_name('request_unreaded')
+
+        driver.quit()
