@@ -7,7 +7,7 @@ import sys
 
 class Command(BaseCommand):
     args = 'Arguments is not needed'
-    help = 'Django admin custom command poc.'
+    help = 'Command printed all app models with objects count of each model'
 
     def handle(self, *args, **options):
         # get full list of apps in settings
