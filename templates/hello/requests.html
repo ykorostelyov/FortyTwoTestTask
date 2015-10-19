@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block extra_head %}
     {% load staticfiles %}
     <link rel="shortcut icon" href="#" />
@@ -8,9 +9,11 @@
 {% endblock extra_head %}
 
 {% block title %}No New Requests{% endblock title %}
-{% block content %}
 
+{% block content %}
     <div id="container" class="col-md-9">
+             <!--TODO make form to show last 10 and save priority -->
+             <!--TODO make inputs in table?-->
             <table class="table table-hover table-striped col-sm-5"
                    id="webrequest_block" >  <thead>
             <tr>
@@ -27,27 +30,8 @@
             </table>
     </div>
 
-    <div  class="col-md-12 form-vertical" style="clear:left;">
-        <div class="col-md-2">
-            <label for="sel1">Select priority</label>
-              <select class="form-control" id="sel1"
-                      name = "priority_selector">
-                  <option>0</option>
-                  <option>1</option>
-              </select>
-        </div>
-
-        <br><br><br><br>
-
-        <div class="col-md-3">
-            <input type="submit" class="btn btn-success" value="Update"
-                   id="update">
-        </div>
-    </div>
-
     <div class="col-md-9" style="clear:left;">
         <hr>
         <a href="{% url 'home' %}">To main page</a>
     </div>
-
 {% endblock content %}

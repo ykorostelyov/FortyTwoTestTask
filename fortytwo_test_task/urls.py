@@ -11,7 +11,7 @@ urlpatterns = patterns(
     url(r'^requests_api/', 'hello.views.requests_queue',
         name='requests_api'),
     url(r'^admin/', include(admin.site.urls), name='admin'),
-    (r'^accounts/login/$',  login),
+    url(r'^accounts/login/$',  login, name = 'login'),
     url(r'^logout/$', logout, name='logout', kwargs={'next_page': '/'}),
     url(r'^edit/$', 'hello.views.edit', name='edit'),
     url(r'^uploads/$', 'hello.views.edit', name='uploads'),
