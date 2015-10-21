@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'RequestInfo.priority'
         db.add_column(u'hello_requestinfo', 'priority',
-                      self.gf('django.db.models.fields.CharField')(default=1, max_length=2),
+                      self.gf('django.db.models.fields.IntegerField')(default=1, max_length=3),
                       keep_default=False)
 
 
@@ -42,7 +42,7 @@ class Migration(SchemaMigration):
             'is_viewed': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'method': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
             'path': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
-            'priority': ('django.db.models.fields.CharField', [], {'default': '1', 'max_length': '2'}),
+            'priority': ('django.db.models.fields.IntegerField', [], {'default': '1', 'max_length': '3'}),
             'remote_addr': ('django.db.models.fields.GenericIPAddressField', [], {'max_length': '39'}),
             'status_code': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
             'uri': ('django.db.models.fields.CharField', [], {'max_length': '1024'}),
