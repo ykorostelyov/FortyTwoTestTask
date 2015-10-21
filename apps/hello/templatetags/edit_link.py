@@ -5,10 +5,10 @@ register = template.Library()
 
 
 def edit_link(object):
-    url = reverse('admin:%s_%s_change' %(object._meta.app_label,
-                                       object._meta.module_name),
-                  args=[object.id] )
+    url = reverse('admin:%s_%s_change' % (object._meta.app_label,
+                                          object._meta.module_name),
+                  args=[object.id])
 
-    return u'<a href="%s">(admin)</a>' %(url)
+    return u'<a href="%s">(admin)</a>' % (url)
 
 register.simple_tag(edit_link)

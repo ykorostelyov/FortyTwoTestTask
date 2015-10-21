@@ -1,11 +1,1 @@
-{% extends "base.html" %}
-{% block title %}42cc>Login{% endblock title %}
-{% block content %}
-    <br>
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Log in" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-{% endblock %}
+{% extends 'admin/login.html' %}

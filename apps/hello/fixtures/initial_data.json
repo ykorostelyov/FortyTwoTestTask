@@ -17,6 +17,25 @@
         "date_joined": "2015-08-12T14:26:12.276Z"
     }
 },
+    {
+    "pk": 3,
+    "model": "auth.user",
+    "fields": {
+        "username": "anonymous",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-10-08T21:01:40Z",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$12000$Iu1NkLI6UQAI$V0WHazL7sjmdYbINeAmd49CohRZ8Mdr/J4uoW1MQhw0=",
+        "email": "",
+        "date_joined": "2015-10-08T21:01:40Z"
+    }
+},
+
 {
     "pk": 1,
     "model": "hello.mycard",

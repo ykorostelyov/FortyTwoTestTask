@@ -1,5 +1,5 @@
 #! coding: utf-8
-from models import Mycard
+from models import Mycard, RequestInfo
 from django import forms
 from apps.hello.widgets import DatePickerWidget
 
@@ -12,3 +12,8 @@ class MycardForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'cols': 5, 'rows': 5}),
             'other_contacts': forms.Textarea(attrs={'cols': 5, 'rows': 8})
         }
+
+
+class RequestInfoForm(forms.ModelForm):
+    class Meta:
+        model = RequestInfo
