@@ -9,6 +9,6 @@ def edit_link(object):
                                           object._meta.module_name),
                   args=[object.id])
 
-    return u'<a href="%s">(admin)</a>' % (url)
+    return url
 
 register.simple_tag(edit_link)

@@ -1,5 +1,3 @@
-__author__ = 'torhammer'
-
 import json
 import sys
 import models

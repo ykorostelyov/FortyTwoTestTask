@@ -64,7 +64,7 @@
             {% if is_auth %}
                 <a href="{% url 'edit' %}">Edit</a> 
                 |
-                {% edit_link first_result %}
+                <a href="{% edit_link first_result %}">(admin)</a>
                 |
                 <a align="right" href="{% url 'logout' %}">Logout</a>
             {% endif %}

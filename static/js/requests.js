@@ -1,6 +1,3 @@
-/**
- * Created by torhammer on 11.09.15.
- */
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
