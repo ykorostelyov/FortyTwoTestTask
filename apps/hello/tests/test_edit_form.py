@@ -24,13 +24,14 @@ class TestEditForm(TestCase):
         # Goto edit not logged on
         response = self.client.get(reverse('edit'))
         self.assertEqual(response.status_code, 302)
-        self.assertIn('/accounts/login/?next=/edit/',
-                      response['Location'])
+        self.assertNotIn("edit-form", response)
+
         # Logging
         c = Client()
         c.login(username="admin", password="admin")
         response = c.get(reverse('edit'))
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "edit-form")
         # Is correct template used
         self.assertTemplateUsed(response, 'hello/edit.html')
 
