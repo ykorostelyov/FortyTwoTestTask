@@ -40,7 +40,9 @@ def requests(request):
         if request.is_ajax():
             try:
                 request_id = request.POST["request_id"]
+                print request_id
                 request_priority = request.POST["priority"]
+                print request_priority
                 RequestInfo.objects.filter(id=request_id)\
                     .update(priority=request_priority)
             except Exception as err:

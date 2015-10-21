@@ -33,12 +33,18 @@
                     {% for r in requests_list %}
                         <tr>
                             <td>
-                                    <select id="priority-{{ r.priority }}"  name="priority"
-                                            class="form-control priority" request-id="{{ r.id }}">
-                                        <option value="1"{% if r.priority == "1" %}selected{% endif %}>1</option>
-                                        <option value="2"{% if r.priority == "2" %}selected{% endif %}>2</option>
-                                        <option value="3"{% if r.priority == "3" %}selected{% endif %}>3</option>
-                                    </select>
+                                <div class="form-group">
+                                    <label label class="col-xs-3 control-label">{{ r.priority }}</label>
+                                    <div class="col-xs-6 selectContainer">
+                                        <select id="priority-{{ r.priority }}"  name="priority"
+                                                class="form-control  priority" request-id="{{ r.id }}">
+                                            <option ></option>
+                                            <option value="3">3</option>
+                                            <option value="2">2</option>
+                                            <option value="1">1</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </td>
                             <td name = "id">{{r.id}}</td>
                             <td name = "method">{{ r.method }}</td>
