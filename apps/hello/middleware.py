@@ -3,6 +3,7 @@ __author__ = 'torhammer'
 import json
 import sys
 import models
+from django.core.urlresolvers import reverse
 
 
 def dumps(value):
@@ -25,7 +26,8 @@ class GetRequest(object):
     def save(request, response):
         meta = request.META.copy()
         # excluding technical requests
-        if response['Content-Type'] != 'application/json':
+        if not (request.path == reverse('requests')
+                and request.method == "POST"):
             models.RequestInfo(
                 host=request.get_host(),
                 path=request.path,
@@ -35,5 +37,5 @@ class GetRequest(object):
                 remote_addr=meta.pop('REMOTE_ADDR', None),
                 is_viewed=False,
                 is_ajax=True,
-                priority=0 if request.method == "GET" else 1
+                priority=1
             ).save()

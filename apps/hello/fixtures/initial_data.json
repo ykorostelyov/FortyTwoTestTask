@@ -18,24 +18,6 @@
     }
 },
     {
-    "pk": 2,
-    "model": "auth.user",
-    "fields": {
-        "username": "user",
-        "first_name": "",
-        "last_name": "",
-        "is_active": true,
-        "is_superuser": true,
-        "is_staff": true,
-        "last_login": "2015-10-09T10:45:30.343Z",
-        "groups": [],
-        "user_permissions": [],
-        "password": "pbkdf2_sha256$12000$luVlPNHISa2m$YVUsXfoOCSEdkeSaPoe45vbOLG1Tf4GzeG//eiRU/Kw=",
-        "email": "",
-        "date_joined": "2015-10-06T19:13:49Z"
-    }
-},
-{
     "pk": 3,
     "model": "auth.user",
     "fields": {
@@ -53,14 +35,7 @@
         "date_joined": "2015-10-08T21:01:40Z"
     }
 },
-{
-    "pk": "13mdzm800zzzcns4ca1mfjwham4ki1d6",
-    "model": "sessions.session",
-    "fields": {
-        "expire_date": "2015-08-26T14:27:21.824Z",
-        "session_data": "ZTJjMGJjYjAzNzk2NGJjZjJkZTdhYzZmZWIzYzgzMDIyZjg5MThjYTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
-    }
-},
+
 {
     "pk": 1,
     "model": "hello.mycard",
@@ -73,33 +48,6 @@
         "birth_date": "1983-01-13",
         "jabber": "ykorostelyov@khavr.com",
         "email": "ykorostelyov@gmail.com"
-    }
-},
-{
-    "pk": 1,
-    "model": "south.migrationhistory",
-    "fields": {
-        "applied": "2015-08-12T14:26:39.235Z",
-        "app_name": "hello",
-        "migration": "0001_initial"
-    }
-},
-{
-    "pk": 1,
-    "model": "admin.logentry",
-    "fields": {
-        "action_flag": 1,
-        "action_time": "2015-08-12T14:29:19.009Z",
-        "object_repr": "Mycard object",
-        "object_id": "1",
-        "change_message": "",
-        "user": [
-            "admin"
-        ],
-        "content_type": [
-            "hello",
-            "mycard"
-        ]
     }
 }
 ]

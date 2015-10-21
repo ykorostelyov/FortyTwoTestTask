@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %}42 Coffee Cups{% endblock title %}
 {% block extra_head %}
-    {% load staticfiles %}
+    {% load staticfiles edit_link %}
+    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock extra_head %}
 {% block content %}
@@ -63,9 +64,7 @@
             {% if is_auth %}
                 <a href="{% url 'edit' %}">Edit</a> 
                 |
-                <a href="/admin/auth/user/{{user_id}}/">
-                    <strong>{{curr_user}}</strong>
-                </a>
+                {% edit_link first_result %}
                 |
                 <a align="right" href="{% url 'logout' %}">Logout</a>
             {% endif %}

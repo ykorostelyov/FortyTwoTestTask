@@ -1,55 +1,59 @@
 {% extends "base.html" %}
+
 {% block extra_head %}
     {% load staticfiles %}
+    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="{% static 'js/requests.js' %}"></script>
 {% endblock extra_head %}
 
-{% block title %}No New Requests{% endblock title %}
-{% block content %}
+{% block title %}New Requests ({{ new_requests_cnt }}){% endblock title %}
 
-        <div id="container" class="col-md-9">
+{% block content %}
+<form>
+
+    <div id="container" class="col-md-9">
+        <a href="#">New requests <span class="badge">{{ new_requests_cnt }}</span></a><br>
+        <br>
+
         <table class="table table-hover table-striped col-sm-5"
-               id="webrequest_block" >  <thead>
-            <tr>
-                <th class="request_header"> ID </th>
+                   id="webrequest_block" >  <thead>
+
+            <tr class ="request_unreaded">
                 <th class="request_header"> Priority </th>
+                <th class="request_header"> ID </th>
                 <th class="request_header"> Method </th>
                 <th class="request_header"> Uri </th>
                 <th class="request_header"> Status code </th>
                 <th class="request_header"> Remote address </th>
             </tr>
-        </thead>
-            <tbody>
-            </tbody>
+            </thead>
+                <tbody>
+                    {% for r in requests_list %}
+                        <tr>
+                            <td>
+                                    <select id="priority-{{ r.priority }}"  name="priority"
+                                            class="form-control priority" request-id="{{ r.id }}">
+                                        <option value="1"{% if r.priority == "1" %}selected{% endif %}>1</option>
+                                        <option value="2"{% if r.priority == "2" %}selected{% endif %}>2</option>
+                                        <option value="3"{% if r.priority == "3" %}selected{% endif %}>3</option>
+                                    </select>
+                            </td>
+                            <td name = "id">{{r.id}}</td>
+                            <td name = "method">{{ r.method }}</td>
+                            <td name = "uri">{{ r.uri }}</td>
+                            <td name = "status_code">{{ r.status_code }}</td>
+                            <td name = "remote_addr">{{ r.remote_addr }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
         </table>
-    </div>
-
-    {% csrf_token %}
-    <div  class="col-md-12 form-vertical" style="clear:left;">
-        <div class="col-md-2">
-            <label for="sel1">Select priority</label>
-              <select class="form-control" id="sel1"
-                      name = "priority_selector">
-                  <option>0</option>
-                  <option>1</option>
-              </select>
-        </div>
-
-
-        <br><br><br><br>
-
-        <div class="col-md-3">
-            <input type="submit" class="btn btn-success" value="Update"
-                   id="update">
-        </div>
-
-    </div>
-
 
         <div class="col-md-9" style="clear:left;">
             <hr>
             <a href="{% url 'home' %}">To main page</a>
         </div>
+    </div>
+    </form>
 {% endblock content %}

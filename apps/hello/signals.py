@@ -37,8 +37,8 @@ def model_create_or_update(sender, created,  **kwargs):
             object_repr=force_unicode(class_name) + ' object',
             action_flag=action,
             change_message=change_message)
-    except:
-        print "err change signal: " + str(sender)
+    except Exception as err:
+        print "error change signal: " + str(sender) + " " + str(err)
 
 
 @receiver(post_delete)
@@ -63,4 +63,4 @@ def model_delete(sender, **kwargs):
             action_flag=action,
             change_message='deleting object')
     except:
-        print "err del signal: " + str(sender)
+        print "error in  signal post_delete: " + str(sender)

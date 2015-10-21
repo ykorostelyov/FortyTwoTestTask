@@ -1,15 +1,7 @@
 #! coding: utf-8
-from models import Mycard
+from models import Mycard, RequestInfo
 from django import forms
-
-
-class DatePickerWidget(forms.DateInput):
-    class Media:
-        css = {'all': ('css/bootstrap-datetimepicker.min.css',)}
-        js = ['moment.min.js',
-              'bootstrap.min.js',
-              'bootstrap-datetimepicker.min.js',
-              'datepicker.js']
+from apps.hello.widgets import DatePickerWidget
 
 
 class MycardForm(forms.ModelForm):
@@ -17,4 +9,11 @@ class MycardForm(forms.ModelForm):
         model = Mycard
         widgets = {
             'birth_date': DatePickerWidget(),
+            'bio': forms.Textarea(attrs={'cols': 5, 'rows': 5}),
+            'other_contacts': forms.Textarea(attrs={'cols': 5, 'rows': 8})
         }
+
+
+class RequestInfoForm(forms.ModelForm):
+    class Meta:
+        model = RequestInfo

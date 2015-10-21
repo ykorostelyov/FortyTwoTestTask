@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    //jQuery("#edit-form").attr('disabled', true);
 
     var options = {
 
