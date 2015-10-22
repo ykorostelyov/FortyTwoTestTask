@@ -6,10 +6,6 @@ import models
 from django.core.urlresolvers import reverse
 
 
-def dumps(value):
-    return json.dumps(value, default=lambda o: None)
-
-
 class GetRequest(object):
     def process_response(self, request, response):
         try:
