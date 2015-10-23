@@ -33,9 +33,8 @@ def requests(request):
     last_10_requests = RequestInfo.objects.order_by("-priority",
                                                     "-id").all()[:10]
     new_requests = RequestInfo.objects.filter(is_viewed=False)
-    RequestInfo.objects.filter(priority=1).\
-        update(priority=0)
 
+    RequestInfo.objects.filter(priority=1).update(priority=0)
     # marking records as read
     for curr_request in new_requests:
         curr_request.is_viewed = True
