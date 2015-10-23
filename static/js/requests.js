@@ -29,7 +29,7 @@ $.ajaxSetup({
 
 function get_new_request_count (){
         $.ajax({
-            url: "/requests_api/",
+            url: "/requests_cnt/",
             type: "GET",
             success: function(json) {
                 new_requests_cnt = json['new_requests_cnt'];
