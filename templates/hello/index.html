@@ -16,8 +16,8 @@
             <div class = "inner_cell">Photo: </div>
             <div id="image-holder"> 
                 <p>
-                    {% if first_result.avatar %}
-                        <img src="{{ MEDIA_URL }}{{ first_result.avatar.url }}"
+                    {% if my_data.avatar %}
+                        <img src="{{ my_data.avatar.url }}"
                              alt="Photo" />
                     {% else %}
                         <img class='image' src="/static/img/default.jpg" alt="Photo" />
@@ -27,9 +27,9 @@
         </div>
 
         <div class = "mydata_value">
-            <div class = "inner_cell">{{ first_result.first_name }}</div>
-            <div class = "inner_cell">{{ first_result.last_name }}</div>
-            <div class = "inner_cell">{{ first_result.birth_date }}</div>
+            <div class = "inner_cell">{{ my_data.first_name }}</div>
+            <div class = "inner_cell">{{ my_data.last_name }}</div>
+            <div class = "inner_cell">{{ my_data.birth_date }}</div>
         </div>
 
         <div class = "mydata_empty"><br> </div>
@@ -49,27 +49,25 @@
 
         <div class = "mydata_value">
             <div class = "inner_cell"></div>
-            <div class = "inner_cell">{{ first_result.email }}</div>
-            <div class = "inner_cell">{{ first_result.jabber }}</div>
-            <div class = "inner_cell">{{ first_result.skype }}</div>
+            <div class = "inner_cell">{{ my_data.email }}</div>
+            <div class = "inner_cell">{{ my_data.jabber }}</div>
+            <div class = "inner_cell">{{ my_data.skype }}</div>
             <br>
-            <div class = "inner_cell">{{ first_result.bio|linebreaks }}</div>
+            <div class = "inner_cell">{{ my_data.bio|linebreaks }}</div>
             <br>
             <br>
             <br>
-            <div class = "inner_cell">{{ first_result.other_contacts|linebreaks }}</div>
+            <div class = "inner_cell">{{ my_data.other_contacts|linebreaks }}</div>
         </div>
 
         <div>
-            {% if is_auth %}
+            {% if user.is_authenticated %}
                 <a href="{% url 'edit' %}">Edit</a> 
                 |
-                {% edit_link first_result %}
+                <a href="{% edit_link my_data %}">(admin)</a>
                 |
                 <a align="right" href="{% url 'logout' %}">Logout</a>
-            {% endif %}
-
-            {% if not is_auth %}
+            {% else %}
                 <a href="{% url 'login' %}">Login</a>
             {%endif %}
         </div>

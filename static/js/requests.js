@@ -1,6 +1,3 @@
-/**
- * Created by torhammer on 11.09.15.
- */
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {
@@ -30,6 +27,22 @@ $.ajaxSetup({
     }
 });
 
+function get_new_request_count (){
+        $.ajax({
+            url: "/requests_api/",
+            type: "GET",
+            success: function(json) {
+                new_requests_cnt = json['new_requests_cnt'];
+                if (new_requests_cnt > 1){
+                  update_request_page();
+                }
+            },
+            error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
+}
+
 function update_request_page (){
     $('form').empty();
     $('form').load(document.URL+ ' form');
@@ -37,24 +50,21 @@ function update_request_page (){
 }
 
 $(document).ready(function(){
-    $(document).on('change', '.priority', function() {
-        var priority_str ='';
-        $(this.children).each(function() {
-            if(this.selected) {
-                priority_str += $(this).val() + " ";
-            }
-        });
-
+    $(document).on('click', '.priority', function() {
+        var request_id ='';
+        var priority_str= '';
+        request_id += $(this).attr("id");
+        priority_str += $("#input-"+request_id).val();
+        update_request_page();
         $.ajax({
             dataType: "json",
             url: '/requests/',
             method: 'POST',
-            data: {'request_id': this.getAttribute('request-id'),
+            data: {'request_id': request_id,
                 'priority': priority_str},
             success: function() {
             }
         });
     });
-
-    setInterval(update_request_page,6000);
+    setInterval(get_new_request_count,1000);
 });
