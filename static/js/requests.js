@@ -66,5 +66,5 @@ $(document).ready(function(){
             }
         });
     });
-    setInterval(get_new_request_count,1000);
+    setInterval(get_new_request_count,6000);
 });
