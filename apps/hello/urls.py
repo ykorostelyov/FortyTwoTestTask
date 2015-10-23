@@ -7,7 +7,7 @@ urlpatterns = patterns(
     '',
     url(r'^$', 'hello.views.index', name='home'),
     url(r'^requests/', 'hello.views.requests', name='requests'),
-    url(r'^requests_api/', 'hello.views.requests_api', name='requests_api'),
+    url(r'^requests_cnt/', 'hello.views.requests_cnt', name='requests_cnt'),
     url(r'^edit/$', 'hello.views.edit', name='edit'),
     url(r'^uploads/$', 'hello.views.edit', name='uploads'),
     url(r'^admin/', include(admin.site.urls), name='admin'),
