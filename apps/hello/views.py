@@ -33,7 +33,6 @@ def requests(request):
     last_10_requests = RequestInfo.objects.order_by("-priority",
                                                     "-id").all()[:10]
     new_requests = RequestInfo.objects.filter(is_viewed=False)
-    #
     RequestInfo.objects.filter(priority=1).\
         update(priority=0)
 

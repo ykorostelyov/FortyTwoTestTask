@@ -39,14 +39,6 @@ class TestMycardModel(TestCase):
         self.assertContains(response, u'Биография')
         self.assertContains(response, u'Другие')
 
-    def test_view__raising_404_when_no_data(self):
-        """
-        raising 404 when no_data for view
-        """
-        Mycard.objects.all().delete()
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 404)
-
     def test_view__only_one_record_from_db(self):
         """
         Only one record from db showing in view
@@ -64,28 +56,3 @@ class TestMycardModel(TestCase):
 
         response = self.client.get(reverse('home'))
         self.assertNotEqual(response, u'Имя2')
-
-    def test_view__using_rendering_data_from_db(self):
-        """
-        Using of rendering data, not static
-        """
-        # Deleting all data to check response
-        Mycard.objects.all().delete()
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 404)
-        # Creating DB record for rendering
-        mycard = Mycard.objects.create(first_name='Имя3',
-                                       last_name='Фамилия3',
-                                       bio=u'Био3',
-                                       email=u'ykorostelyov@gmail.com',
-                                       jabber=u'ykorostelyov@khavr.com',
-                                       skype=u'yuriy.torhammer',
-                                       birth_date=u'1983-01-13',
-                                       other_contacts=u'Другие контакты3')
-
-        # calling home view with rendered data
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
-        # Checking of rendered data
-        self.assertEqual(mycard.__unicode__(),
-                         str(response.context['first_result']))
