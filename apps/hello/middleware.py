@@ -1,11 +1,6 @@
-import json
 import sys
 import models
 from django.core.urlresolvers import reverse
-
-
-def dumps(value):
-    return json.dumps(value, default=lambda o: None)
 
 
 class GetRequest(object):
@@ -13,11 +8,8 @@ class GetRequest(object):
         try:
             if response['Content-Type'] != 'application/json':
                 self.save(request, response)
-
         except Exception as error:
-            # error logging
             print >> sys.stderr, "Error saving request log", error
-
         return response
 
     @staticmethod
@@ -35,5 +27,5 @@ class GetRequest(object):
                 remote_addr=meta.pop('REMOTE_ADDR', None),
                 is_viewed=False,
                 is_ajax=True,
-                priority=1
+                priority=0
             ).save()

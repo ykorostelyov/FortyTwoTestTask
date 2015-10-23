@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import Mycard, RequestInfo
-from django.contrib.admin.models import LogEntry
+from .models import Mycard, RequestInfo, EventLog
 
 
 admin.site.register(Mycard)
 admin.site.register(RequestInfo)
-admin.site.register(LogEntry)
+admin.site.register(EventLog)

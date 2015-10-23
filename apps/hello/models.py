@@ -2,7 +2,6 @@ from django.db import models
 from PIL import Image
 
 
-# mycard model
 class Mycard(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -38,7 +37,6 @@ class Mycard(models.Model):
         return self.first_name + ' ' + self.last_name
 
 
-# Request model
 class RequestInfo(models.Model):
     date = models.DateTimeField(auto_now=True)
     host = models.CharField(max_length=1024)
@@ -50,4 +48,13 @@ class RequestInfo(models.Model):
     uri = models.CharField(max_length=1024)
     status_code = models.CharField(max_length=30)
     user_agent = models.CharField(max_length=1024)
-    priority = models.IntegerField(max_length=3, default=1)
+    priority = models.IntegerField(max_length=3, default=0)
+
+
+class EventLog(models.Model):
+    date = models.DateTimeField(auto_now=True)
+    model = models.CharField(max_length=150, default=False)
+    event = models.CharField(max_length=20, default=False)
+
+    def __unicode__(self):
+        return str(self.date) + ' ' + self.model+' '+self.event

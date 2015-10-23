@@ -15,4 +15,5 @@ class TestTemlatetag(TestCase):
         c = Client()
         c.login(username="admin", password="admin")
         response = c.get(reverse('home'))
+        print response
         self.assertContains(response, '/hello/mycard/', 1)
