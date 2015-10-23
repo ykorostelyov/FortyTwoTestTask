@@ -12,49 +12,45 @@
 
 {% block content %}
 <form>
-
     <div id="container" class="col-md-12">
         <br>
         <table class="table table-hover table-striped col-sm-5"
-                   id="webrequest_block" >  <thead>
-
-            <tr class ="request_unreaded">
-                <th class="request_header"> Priority </th>
-                <th class="request_header"> ID </th>
-                <th class="request_header"> Method </th>
-                <th class="request_header"> Uri </th>
-                <th class="request_header"> Status code </th>
-                <th class="request_header"> Remote address </th>
-            </tr>
-            </thead>
-                <tbody>
-                    {% for r in requests_list %}
-                        <tr>
-                            <td class="col-xs-2">
-                                <div >
-                                    <div class="form-group col-xs-6">
-                                        <input class="form-control" name ="input"
-                                               id="input-{{r.id}}" value ="{{r.priority}}">
-                                    </div>
-                                    <button type="button" name="priority" id="{{r.id}}" class="btn  btn-default priority">Save</button>
-                                </div>
-
-                            </td>
-                            <td name = "id">{{r.id}}</td>
-                            <td name = "method">{{ r.method }}</td>
-                            <td name = "uri">{{ r.uri }}</td>
-                            <td name = "status_code">{{ r.status_code }}</td>
-                            <td name = "remote_addr">{{ r.remote_addr }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
+               id="webrequest_block" >  <thead>
+        <tr class ="request_unreaded">
+            <th class="request_header"> Priority </th>
+            <th class="request_header"> ID </th>
+            <th class="request_header"> Method </th>
+            <th class="request_header"> Uri </th>
+            <th class="request_header"> Status code </th>
+            <th class="request_header"> Remote address </th>
+        </tr>
+        </thead>
+            <tbody>
+            {% for r in requests_list %}
+                <tr>
+                    <td class="col-xs-2">
+                        <div >
+                            <div class="form-group col-xs-6">
+                                <input class="form-control" name ="input" id="input-{{r.id}}" value ="{{r.priority}}">
+                            </div>
+                            <button type="button" name="priority" id="{{r.id}}" class="btn  btn-default priority">Save</button>
+                        </div>
+                    </td>
+                    <td name = "id">{{r.id}}</td>
+                    <td name = "method">{{ r.method }}</td>
+                    <td name = "uri">{{ r.uri }}</td>
+                    <td name = "status_code">{{ r.status_code }}</td>
+                    <td name = "remote_addr">{{ r.remote_addr }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
         </table>
         <div class="col-md-12" style="clear:left;">
             <hr>
             <a href="{% url 'home' %}">To main page</a>
         </div>
     </div>
-    </form>
+</form>
     <br>
     <br>
 {% endblock content %}
