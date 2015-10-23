@@ -124,7 +124,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
 # Template Settings
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or
