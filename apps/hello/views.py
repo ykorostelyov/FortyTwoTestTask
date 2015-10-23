@@ -33,7 +33,6 @@ def requests(request):
     last_10_requests = RequestInfo.objects.order_by("-priority",
                                                     "-id").all()[:10]
     new_requests = RequestInfo.objects.filter(is_viewed=False)
-    RequestInfo.objects.all().delete()
     # marking records as read
     for curr_request in new_requests:
         curr_request.is_viewed = True
@@ -48,6 +47,7 @@ def requests(request):
 # checking of new data
 def requests_api(request):
     new_requests = RequestInfo.objects.filter(is_viewed=False)
+    RequestInfo.objects.all().delete()
     return HttpResponse(json.dumps({'new_requests_cnt': len(new_requests)}),
                         content_type="application/json")
 
