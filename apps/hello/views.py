@@ -47,7 +47,6 @@ def requests(request):
 # checking of new data
 def requests_api(request):
     new_requests = RequestInfo.objects.filter(is_viewed=False)
-    RequestInfo.objects.all().delete()
     return HttpResponse(json.dumps({'new_requests_cnt': len(new_requests)}),
                         content_type="application/json")
 
