@@ -56,7 +56,6 @@ $(document).ready(function(){
         request_id += $(this).attr("id");
         priority_str += $("#input-"+request_id).val();
         alert ("Request_id="+request_id+", New Priority=" + priority_str);
-        update_request_page();
         $.ajax({
             dataType: "json",
             url: '/requests/',
@@ -64,6 +63,7 @@ $(document).ready(function(){
             data: {'request_id': request_id,
                 'priority': priority_str},
             success: function() {
+                        update_request_page(); 
             }
         });
     });
