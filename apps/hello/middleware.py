@@ -16,8 +16,9 @@ class GetRequest(object):
     def save(request, response):
         meta = request.META.copy()
         # excluding technical requests
-        if not (request.path == reverse('requests')
-                and request.method == "POST"):
+        if not ((request.path == reverse('requests')
+                and request.method == "POST") or
+                request.path == reverse('requests_cnt')):
             models.RequestInfo(
                 host=request.get_host(),
                 path=request.path,
