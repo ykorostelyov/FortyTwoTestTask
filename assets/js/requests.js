@@ -55,7 +55,6 @@ $(document).ready(function(){
         var priority_str= '';
         request_id += $(this).attr("id");
         priority_str += $("#input-"+request_id).val();
-        alert ("Request_id="+request_id+", New Priority=" + priority_str);
         $.ajax({
             dataType: "json",
             url: '/requests/',
@@ -63,9 +62,9 @@ $(document).ready(function(){
             data: {'request_id': request_id,
                 'priority': priority_str},
             success: function() {
-                        update_request_page(); 
             }
         });
+    setTimeout(update_request_page(), 500);
     });
     setInterval(get_new_request_count,6000);
 });
