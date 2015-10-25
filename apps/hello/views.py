@@ -40,7 +40,6 @@ def requests(request):
 
     context = {'requests_list': last_10_requests,
                'new_requests_cnt': len(new_requests)}
-
     return render(request, "hello/requests.html", context)
 
 
