@@ -48,7 +48,7 @@ class RequestInfo(models.Model):
     uri = models.CharField(max_length=1024)
     status_code = models.CharField(max_length=30)
     user_agent = models.CharField(max_length=1024)
-    priority = models.IntegerField(max_length=3, default=0)
+    priority_num = models.IntegerField(default=0)
 
 
 class EventLog(models.Model):
