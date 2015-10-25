@@ -26,11 +26,12 @@ def requests(request):
                 request_id = request.POST["request_id"]
                 request_priority = request.POST["priority"]
                 RequestInfo.objects.filter(id=request_id)\
-                    .update(priority=request_priority)
+                    .update(priority_num=request_priority)
             except Exception as err:
                 log.error(err)
     # GET
-    last_10_requests = RequestInfo.objects.order_by("-priority").all()[:10]
+    last_10_requests = RequestInfo.objects.order_by("-priority_num",
+                                                    "-id").all()[:10]
     new_requests = RequestInfo.objects.filter(is_viewed=False)
     # marking records as read
     for curr_request in new_requests:

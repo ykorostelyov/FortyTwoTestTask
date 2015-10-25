@@ -20,12 +20,12 @@ class TestPriority(TestCase):
             self.client.get(reverse('home'))
 
         # having list with only 1 priority
-        self.assertEqual(response.context['requests_list'][0].priority, 0)
+        self.assertEqual(response.context['requests_list'][0].priority_num, 0)
 
         # changing priority in first record
-        RequestInfo.objects.filter(id=first_id).update(priority=3)
+        RequestInfo.objects.filter(id=first_id).update(priority_num=3)
         response = self.client.get(reverse('requests'))
 
         # first record on the top of the list
-        self.assertEqual(response.context['requests_list'][0].priority, 3)
+        self.assertEqual(response.context['requests_list'][0].priority_num, 3)
         self.assertContains(response, 'priority-3', 0)
