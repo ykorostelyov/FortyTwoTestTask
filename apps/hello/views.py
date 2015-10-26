@@ -13,6 +13,7 @@ log = logging.getLogger('apps')
 
 
 def index(request):
+    # db no-data checking
     try:
         my_data = Mycard.objects.first()
     except:
@@ -55,7 +56,7 @@ def requests_cnt(request):
 
 @login_required()
 def edit(request):
-    # no data checking
+    # db no-data checking
     try:
         edit_form = MycardForm(instance=Mycard.objects.first())
     except:
