@@ -10,10 +10,12 @@ class TestCommands(TestCase):
         Using subprocess.Popen, because of "django DeprecationWarning:
         os.popen4 is deprecated. Use the subprocess module." warning
         """
-        source = os.getcwd()+'/manage.py get_models_info'
-        p = subprocess.Popen([source], stderr=subprocess.STDOUT,
+        source = 'python '+os.getcwd()+'/manage.py get_models_info'
+        p = subprocess.Popen([source],
+                             stderr=subprocess.STDOUT,
                              stdout=subprocess.PIPE,
-                             universal_newlines=True, shell=True)
+                             universal_newlines=True,
+                             shell=True)
         p.wait()
         output = [l.strip() for l in p.stdout]
         self.assertIn('RequestInfo', str(output))
