@@ -13,11 +13,7 @@ log = logging.getLogger('apps')
 
 
 def index(request):
-    # db no-data checking
-    try:
-        my_data = Mycard.objects.first()
-    except:
-        raise Http404
+    my_data = Mycard.objects.first()
     context = {'my_data': my_data}
     return render(request, "hello/index.html", context)
 
