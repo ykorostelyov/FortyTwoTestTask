@@ -64,7 +64,7 @@ $(document).ready(function(){
             success: function() {
             }
         });
-    setTimeout(update_request_page(), 1000);
+    setTimeout(update_request_page(), 200);
     });
-    setInterval(get_new_request_count,6000);
+    setInterval(get_new_request_count,1000);
 });
