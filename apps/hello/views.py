@@ -56,7 +56,7 @@ def requests_cnt(request):
 
 @login_required()
 def edit(request):
-    # db no data checking
+    # db no-data checking
     try:
         edit_form = MycardForm(instance=Mycard.objects.first())
     except:
