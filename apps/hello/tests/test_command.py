@@ -7,6 +7,7 @@ class TestCommands(TestCase):
         """
         Test my custom command.
         """
+        
         fin, fout = os.popen4('python manage.py get_models_info')
         result = fout.read()
         self.assertIn('apps.hello.models.RequestInfo', result)
